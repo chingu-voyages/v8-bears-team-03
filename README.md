@@ -4,7 +4,7 @@ Add-project-description-here | Voyage-8 | https://chingu.io/
 Hi Everybody, here's the dry-run :)
 
 1. Clone the repo on your machine [git clone {address}]
-2. Checkout the 'development' branch [git checkout development]
+2. Checkout the 'development' branch [git checkout dev]
 3. Create your own branch [git checkout -b {branch name}]
 4. Open up the instruction.html file and add your name to the list
 5. Add and then commit your change on your local machine
@@ -13,6 +13,6 @@ Hi Everybody, here's the dry-run :)
 
 * Go through these steps as many times as you want. The first time just add your name to the instructions.html file
 The other times feel free to add new files, etc. REMEMBER each time you create a new working branch you'll
-want to do go into 'development' and [git pull] to make sure it's updated.
+want to do go into 'dev' and [git pull] to make sure it's updated beforehand.
 
 Let me know if there are changes to this process you think need to be made!
