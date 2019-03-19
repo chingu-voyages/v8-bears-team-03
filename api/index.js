@@ -3,10 +3,16 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
 const http = require("http");
 
 const app = express();
+
+// Model require
+const beer = require('./models/beer');
+const coffee = require('./models/coffee');
+const drink = require('./models/drink');
+const liquor = require('./models/liquor');
+const tea = require('./models/tea');
 
 mongoose
   .connect("mongodb://localhost:27017/devbev", { useNewUrlParser: true })
