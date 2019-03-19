@@ -23,22 +23,42 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <link rel="stylesheet" type="text/css" href="../src/index.css" />
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway:400,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
     <title>devbev</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
-    <nav>
-      <h1>devbev</h1>
-      <ul>
-        <li>beer</li>
-        <li>tea</li>
-        <li>coffee</li>
-        <li>liqour</li>
-        <li id="add">add my drink</li>
-      </ul>
-    </nav>
+    <div id="page-wrapper">
+      <nav>
+        <h1>devbev</h1>
+        <ul>
+          <li>beer</li>
+          <li>tea</li>
+          <li>coffee</li>
+          <li>liqour</li>
+          <li id="add">add my drink</li>
+        </ul>
+      </nav>
 
+      <main>
+        <section id="display-case">
+          <div id="DisplayCase">Place Holder for Display Case</div>
+        </section>
+
+        <section id="drink-feed">
+          <div id="FeedItemComp"></div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

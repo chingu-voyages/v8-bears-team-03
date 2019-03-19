@@ -1,5 +1,5 @@
 import React from "react";
-import feedData from "../feedData";
+import feedData from "../testData/feedData";
 import RatingStars from "./RatingStars";
 
 function FeedItemComp() {
