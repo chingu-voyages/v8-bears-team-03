@@ -6,10 +6,10 @@ const options = { discriminatorKey: "type" };
 
 const teaSchema = new Schema(
   {
-    leaf_type: {
+    leafType: {
       type: String
     },
-    steep_time: {
+    steepTime: {
       type: Number
     }
   },

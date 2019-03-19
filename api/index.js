@@ -1,3 +1,4 @@
+// Dependencies
 const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.get("/", (req, res) => res.send("serving the devbev"));
 
+// POST /drink
 app.post('/drink', (req, res) => { 
   let drink = new Drink({
     name: req.body.name,
