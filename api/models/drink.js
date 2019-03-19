@@ -9,6 +9,10 @@ const drinkSchema = new Schema(
       type: String,
       required: true
     },
+    name: {
+      type: String,
+      required: true
+    },
     tastingNotes: {
       type: String
     },
