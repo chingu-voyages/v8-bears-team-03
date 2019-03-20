@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-p, img, div {
+p, img, div, h1, h2, h3, h4 {
   margin: 0;
   padding: 0;
 }
@@ -62,12 +62,11 @@ ul {
   padding: 0;
   margin: 0;
   color: rgb(0, 0, 0);
-
 }
 
 li {
   background-color: rgba(255, 255, 255, .5);
-  width: 100px;
+  width: 125px;
   height: 2rem;
   line-height: 2rem;
   border: 1px solid clear;
@@ -79,7 +78,8 @@ li {
 }
 
 #add {
-  width: 150px;
+  background-color: rgba(124, 119, 119, 0.527);
+  color: white;
 }
 
 li:hover {
@@ -97,30 +97,61 @@ main {
 }
 
 /*=====================*/
-/* FeedItemComp Styles */
+/* Display Case Styles */
 /*=====================*/
 
 #DisplayCase {
   height: 300px;
   width: 95%;
-  text-align: center;
-  line-height: 300px;
   font-family: 'Josefin Sans';
-  font-size: 3rem;
-  transform: translateX(-150px);
-  width: calc(98% + 150px);
+  transform: translateX(-140px);
+  width: calc(98% + 140px);
+  /* border: 2px solid black; */
+}
+
+.display-case-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  height: 100%;
+  font-family: 'Raleway';
+  /* border: 2px solid blue; */
+}
+
+.display-case-box h3, .display-case-box h4 {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+}
+
+.display-case-box h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.display-case-box h4 {
+  font-size: 1.25rem;
+}
+
+.display-case-box p {
+  font-size: .75rem;
+  margin-bottom: .25rem;
+}
+
+#DisplayCase img {
+  height: 250px;
 }
 
 
-
 /*=====================*/
-/* FeedItemComp Styles */
+/* Beverage Feed Styles */
 /*=====================*/
 
 
-#drink-feed {
+#beverage-feed {
   transform: translateX(-350px);
   width: calc(98% + 350px);
+  /* border: 2px solid blue; */
 }
 
 .feed-box {
@@ -138,6 +169,7 @@ main {
   align-items: center;
   height: 90%;
   padding-left: .50rem;
+  /* border: 2px solid blue; */
 }
 
 .feed-card {
@@ -146,14 +178,13 @@ main {
   margin: 0 1rem 0 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   text-align: center;
+  /* border: 2px solid blue; */
 }
 
 .feed-image {
   height: 150px;
-  width: 150px;
   margin-bottom: .25rem;
   box-shadow: 2px 2px 5px rgb(185, 181, 181),
               2px -2px 5px rgb(185, 181, 181),
@@ -164,10 +195,11 @@ main {
 
 .feed-info-box {
   font-family: 'Raleway';
+  font-size: .75rem;
 }
 
 .feed-rating{
   color: rgba(18, 46, 170, 0.671);
-  margin-top: .25rem;
+  margin-top: .5rem;
   font-size: 1rem;
 }

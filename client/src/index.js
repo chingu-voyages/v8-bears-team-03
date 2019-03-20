@@ -3,9 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 // import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import FeedItemComp from "./components/FeedItemComp";
+import BeverageFeed from "./components/BeverageFeed";
+import DisplayCase from "./components/DisplayCase";
 
-ReactDOM.render(<FeedItemComp />, document.getElementById("FeedItemComp"));
+ReactDOM.render(<BeverageFeed />, document.getElementById("BeverageFeed"));
+ReactDOM.render(<DisplayCase />, document.getElementById("DisplayCase"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
