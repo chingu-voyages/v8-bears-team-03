@@ -67,12 +67,13 @@ const baseOptions = () => {
     tasting_notes: faker.lorem.word(),
     comments: faker.lorem.words(),
     image: "https://via.placeholder.com/1200",
-    rating: Math.floor(Math.random() * 10) + 1
+    rating: Math.floor(Math.random() * 5) + 1
   };
 };
 
 const drinkOptions = type => {
   let options = {};
+  options.type = type;
 
   switch (type) {
     case "beer":
