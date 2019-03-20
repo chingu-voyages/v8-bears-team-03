@@ -2,7 +2,7 @@ import React from "react";
 import feedData from "../testData/feedData";
 import RatingStars from "./RatingStars";
 
-function FeedItemComp() {
+function BeverageFeed() {
   return (
     <div className="feed-box">
       <div className="feed-scroll">
@@ -20,4 +20,4 @@ function FeedItemComp() {
   );
 }
 
-export default FeedItemComp;
+export default BeverageFeed;
