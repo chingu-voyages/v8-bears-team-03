@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Drink = require("./drink");
-const options = { discriminatorKey: "type" };
+const options = { discriminatorKey: "drinkType" };
 
 const beerSchema = new Schema(
   {
