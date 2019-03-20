@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const options = { discriminatorKey: "type" };
+const options = { discriminatorKey: "drinkType" };
 
 const drinkSchema = new Schema(
   {
