@@ -6,7 +6,7 @@ const options = { discriminatorKey: "drinkType" };
 
 const liquorSchema = new Schema(
   {
-    type: {
+    typeOfLiquor: {
       type: String
     }
   },

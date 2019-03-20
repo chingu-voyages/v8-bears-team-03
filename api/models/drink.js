@@ -5,11 +5,15 @@ const options = { discriminatorKey: "drinkType" };
 
 const drinkSchema = new Schema(
   {
+    type: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
     },
-    tasting_notes: {
+    tastingNotes: {
       type: String
     },
     comments: {
