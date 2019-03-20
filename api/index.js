@@ -13,6 +13,7 @@ const Coffee = require('./models/coffee');
 const Liquor = require('./models/liquor');
 const Tea = require('./models/tea');
 
+// Mongoose Connect
 mongoose
   .connect("mongodb://localhost:27017/devbev", { useNewUrlParser: true })
   .then(() => {
@@ -27,14 +28,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-app.get("/", (req, res) => res.send("serving the devbev"));
+// GET all drinks
+app.get("/drink", (req, res) => {
+  Promise.all([
+    Tea.find().exec(),
+    Beer.find().exec(),
+    Coffee.find().exec(),
+    Liquor.find().exec()
+  ]).then(([tea, beer, coffee, liquor]) => 
+    res.json({tea, beer, coffee, liquor}));
+});
 
 // POST /drink
 app.post('/drink', (req, res) => { 
   let type = req.body.type;
   let newDrink;
 
-  // Determine which type 
+  // Determine which type and store it as that type
   switch (type) {
     case 'beer':
       newDrink = new Beer({
