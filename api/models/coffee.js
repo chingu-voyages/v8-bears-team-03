@@ -6,10 +6,10 @@ const options = { discriminatorKey: "type" };
 
 const coffeeSchema = new Schema(
   {
-    bean_type: {
+    beanType: {
       type: String
     },
-    brew_time: {
+    brewTime: {
       type: Number
     },
     strength: {
