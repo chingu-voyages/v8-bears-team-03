@@ -28,13 +28,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// GET all drinks
+// GET all drinks name, image and rating 
 app.get("/drink", (req, res) => {
   Promise.all([
-    Tea.find().exec(),
-    Beer.find().exec(),
-    Coffee.find().exec(),
-    Liquor.find().exec()
+    Tea.find().select('name image rating -_id').exec(),
+    Beer.find().select('name image rating -_id').exec(),
+    Coffee.find().select('name image rating -_id').exec(),
+    Liquor.find().select('name image rating -_id').exec()
   ]).then(([tea, beer, coffee, liquor]) => 
     res.json({tea, beer, coffee, liquor}));
 });
