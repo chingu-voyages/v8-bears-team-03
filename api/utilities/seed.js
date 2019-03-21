@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const faker = require("faker");
 
 const Tea = require("../models/tea");
 const Coffee = require("../models/coffee");
@@ -16,7 +15,7 @@ mongoose
     clearDatabase();
   })
   .then(() => {
-    createDrink(); // Takes a number argumnet to determin how many drinks to create (20 default)
+    createDrink();
   })
   .catch(error => {
     console.log(error);
@@ -24,21 +23,21 @@ mongoose
 
 clearDatabase = () => {
   Drink.deleteMany({}, err => {
-    console.log("collection removed");
+    console.log("Drinks collection dropped");
   });
 };
 
-const createDrink = (num = 20) => {
-  const types = ["beer", "liquor", "tea", "coffee"];
+const createDrink = () => {
+  feedData.forEach((item, key, arr) => {
+    drink = buildDrinkModel(item);
 
-  [...Array(num)].forEach((_, i) => {
-    let type = types[Math.floor(Math.random() * types.length)];
-    let newDrink = buildDrinkModel(type);
-
-    newDrink
+    drink
       .save()
       .then(drink => {
         console.log(drink);
+        if (key === arr.length - 1) {
+          mongoose.disconnect();
+        }
       })
       .catch(err => {
         console.log(err);
@@ -46,10 +45,8 @@ const createDrink = (num = 20) => {
   });
 };
 
-const buildDrinkModel = type => {
-  let options = { ...baseOptions(), ...drinkOptions(type) };
-
-  switch (type) {
+const buildDrinkModel = options => {
+  switch (options.type) {
     case "beer":
       return new Beer(options);
     case "tea":
@@ -61,38 +58,125 @@ const buildDrinkModel = type => {
   }
 };
 
-const baseOptions = () => {
-  return {
-    name: faker.lorem.word(),
-    tasting_notes: faker.lorem.word(),
-    comments: faker.lorem.words(),
-    image: "https://via.placeholder.com/1200",
-    rating: Math.floor(Math.random() * 5) + 1
-  };
-};
-
-const drinkOptions = type => {
-  let options = {};
-  options.type = type;
-
-  switch (type) {
-    case "beer":
-      options.style = faker.lorem.word();
-      options.source = faker.lorem.word();
-      break;
-    case "tea":
-      options.leaf_type = faker.lorem.word();
-      options.steep_time = Math.floor(Math.random() * 8) + 1;
-      break;
-    case "coffee":
-      options.bean_type = faker.lorem.word();
-      options.brew_type = faker.lorem.word();
-      options.strength = Math.floor(Math.random() * 5) + 1;
-      break;
-    case "liquor":
-      options.type = faker.lorem.word();
-      break;
+const feedData = [
+  {
+    type: "beer",
+    name: "Dragon's Milk",
+    tastingNotes: "Dark and Rich",
+    comments: "pairs well with prototyping in JavaScript",
+    image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
+    rating: 3,
+    style: "Stout aged in Bourbon Casks",
+    source: "New Holland Brewing"
+  },
+  {
+    type: "coffee",
+    name: "Gingerbread Cold Brew",
+    tastingNotes: "slightly spicy with a hint of orange",
+    comments: "",
+    image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
+    rating: 4,
+    beanType: "Arabica",
+    brewType: "Cold Brew",
+    strength: 3
+  },
+  {
+    type: "liquor",
+    name: "Angel's Envy",
+    tastingNotes: "smooth yet fiery, finishes with a hint of port",
+    comments: "excellent!",
+    image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
+    rating: 5,
+    typeOfLiquor: "Bourbon"
+  },
+  {
+    type: "tea",
+    name: "Laager",
+    tastingNotes: "delicate and fruity",
+    comments: "great African tea!",
+    image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
+    rating: 4,
+    leafType: "Red",
+    steepTime: 5
+  },
+  {
+    type: "beer",
+    name: "Dragon's Milk",
+    tastingNotes: "Dark and Rich",
+    comments: "pairs well with prototyping in JavaScript",
+    image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
+    rating: 3,
+    style: "Stout aged in Bourbon Casks",
+    source: "New Holland Brewing"
+  },
+  {
+    type: "coffee",
+    name: "Gingerbread Cold Brew",
+    tastingNotes: "slightly spicy with a hint of orange",
+    comments: "",
+    image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
+    rating: 4,
+    beanType: "Arabica",
+    brewType: "Cold Brew",
+    strength: 3
+  },
+  {
+    type: "liquor",
+    name: "Angel's Envy",
+    tastingNotes: "smooth yet fiery, finishes with a hint of port",
+    comments: "excellent!",
+    image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
+    rating: 5,
+    typeOfLiquor: "Bourbon"
+  },
+  {
+    type: "tea",
+    name: "Laager",
+    tastingNotes: "delicate and fruity",
+    comments: "great African tea!",
+    image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
+    rating: 4,
+    leafType: "Red",
+    steepTime: 5
+  },
+  {
+    type: "beer",
+    name: "Dragon's Milk",
+    tastingNotes: "Dark and Rich",
+    comments: "pairs well with prototyping in JavaScript",
+    image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
+    rating: 3,
+    style: "Stout aged in Bourbon Casks",
+    source: "New Holland Brewing"
+  },
+  {
+    type: "coffee",
+    name: "Gingerbread Cold Brew",
+    tastingNotes: "slightly spicy with a hint of orange",
+    comments: "",
+    image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
+    rating: 4,
+    beanType: "Arabica",
+    brewType: "Cold Brew",
+    strength: 5
+  },
+  {
+    type: "liquor",
+    name: "Angel's Envy",
+    tastingNotes: "smooth yet fiery, finishes with a hint of port",
+    comments: "excellent!",
+    image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
+    rating: 5,
+    typeOfLiquor: "Bourbon"
+  },
+  {
+    type: "tea",
+    name: "Laager",
+    tastingNotes: "delicate and fruity",
+    comments: "great African tea!",
+    image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
+    rating: 4,
+    leafType: "Red",
+    steepTime: 6
   }
-
-  return options;
-};
+];
