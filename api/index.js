@@ -12,6 +12,7 @@ const Beer = require('./models/beer');
 const Coffee = require('./models/coffee');
 const Liquor = require('./models/liquor');
 const Tea = require('./models/tea');
+const Drink = require('./models/drink');
 
 // Mongoose Connect
 mongoose
@@ -37,6 +38,33 @@ app.get("/drink", (req, res) => {
     Liquor.find().select('name image rating -_id').exec()
   ]).then(([tea, beer, coffee, liquor]) => 
     res.json({tea, beer, coffee, liquor}));
+});
+
+app.get("/drinks", (req, res) => {
+  let type = req.query.type;
+  
+  switch (type) {
+    case 'beer':
+      Promise.resolve(Beer.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    case 'tea':
+      Promise.resolve(Tea.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    case 'coffee':
+      Promise.resolve(Coffee.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    case 'liquor':
+      Promise.resolve(Liquor.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    default:
+      Promise.resolve(Drink.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+  }
 });
 
 // POST /drink
