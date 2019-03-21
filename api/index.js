@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+// Initialize the Express App
 const app = express();
 
 // Models required
@@ -12,6 +13,7 @@ const Beer = require('./models/beer');
 const Coffee = require('./models/coffee');
 const Liquor = require('./models/liquor');
 const Tea = require('./models/tea');
+const Drink = require('./models/drink');
 
 // Mongoose Connect
 mongoose
@@ -23,6 +25,7 @@ mongoose
     console.log(error);
   });
 
+// Apply body Parser and server public assets and routes
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,6 +40,36 @@ app.get("/drink", (req, res) => {
     Liquor.find().select('name image rating -_id').exec()
   ]).then(([tea, beer, coffee, liquor]) => 
     res.json({tea, beer, coffee, liquor}));
+});
+
+// GET by type and display name, image, rating
+app.get("/drinks", (req, res) => {
+  let type = req.query.type;
+  
+  // Checks if /drinks?type=<case> then displays
+  switch (type) {
+    case 'beer':
+      Promise.resolve(Beer.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    case 'tea':
+      Promise.resolve(Tea.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    case 'coffee':
+      Promise.resolve(Coffee.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    case 'liquor':
+      Promise.resolve(Liquor.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+    // Displays everything as default
+    default:
+      Promise.resolve(Drink.find().select('name image rating -_id').exec())
+        .then(response => res.json(response));
+      break;
+  }
 });
 
 // POST /drink
@@ -94,6 +127,7 @@ app.post('/drink', (req, res) => {
       break;
     }
 
+  // Saves POST and sends it back as well. If not, then error
   newDrink.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -101,6 +135,7 @@ app.post('/drink', (req, res) => {
   });
 });
 
+// Start app
 app.listen(8000, "localhost", () => {
   console.log("listening on port 8000");
 });
