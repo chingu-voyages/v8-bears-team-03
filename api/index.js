@@ -91,7 +91,7 @@ app.get('/drinks/:id', (req, res) => {
 });
 
 // POST /drink
-app.post('/drink', (req, res) => { 
+app.post('/drinks', (req, res) => { 
   let type = req.body.type;
   let newDrink;
 
@@ -99,6 +99,7 @@ app.post('/drink', (req, res) => {
   switch (type) {
     case 'beer':
       newDrink = new Beer({
+        type,
         name: req.body.name,
         style: req.body.style,
         source: req.body.source,
@@ -110,6 +111,7 @@ app.post('/drink', (req, res) => {
       break;
     case 'coffee':
       newDrink = new Coffee({
+        type,
         name: req.body.name,
         beanType: req.body.beanType,
         brewTime: req.body.brewTime,
@@ -122,6 +124,7 @@ app.post('/drink', (req, res) => {
       break;
     case 'liquor':
       newDrink = new Liquor({
+        type,
         name: req.body.name,
         tastingNotes: req.body.tastingNotes,
         comments: req.body.comments,
@@ -131,6 +134,7 @@ app.post('/drink', (req, res) => {
       break;
     case 'tea':
       newDrink = new Tea({
+        type,
         name: req.body.name,
         leafType: req.body.leafType,
         steepTime: req.body.steepTime,
@@ -146,8 +150,8 @@ app.post('/drink', (req, res) => {
     }
 
   // Saves POST and sends it back as well. If not, then error
-  newDrink.save().then((doc) => {
-    res.send(doc);
+  newDrink.save().then((drink) => {
+    res.send(drink);
   }, (e) => {
     res.status(400).send(e);
   });
