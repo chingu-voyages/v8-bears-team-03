@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// GET all drinks name, image and rating 
+// GET all drinks and display name, image and rating 
 app.get("/drink", (req, res) => {
   Promise.all([
     Tea.find().select('name image rating -_id').exec(),
@@ -70,6 +70,24 @@ app.get("/drinks", (req, res) => {
         .then(response => res.json(response));
       break;
   }
+});
+
+// GET by ID and display all info
+app.get('/drinks/:id', (req, res) => {
+  let id = req.params.id;
+
+  // Show everything but id and v
+  Drink.findById(id).select('-_id -__v').then((drink) => {
+    // Check if theres that drink
+    if (!drink) {
+      return res.status(401).send('That drink isnt here');
+    }
+
+    // If there is, then send it back
+    res.send({drink});
+  }, (e) => {
+    res.status(400).send(e);
+  })
 });
 
 // POST /drink
