@@ -31,17 +31,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// GET all drinks and display name, image and rating 
-app.get("/drink", (req, res) => {
-  Promise.all([
-    Tea.find().select('name image rating -_id').exec(),
-    Beer.find().select('name image rating -_id').exec(),
-    Coffee.find().select('name image rating -_id').exec(),
-    Liquor.find().select('name image rating -_id').exec()
-  ]).then(([tea, beer, coffee, liquor]) => 
-    res.json({tea, beer, coffee, liquor}));
-});
-
 // GET by type and display name, image, rating
 app.get("/drinks", (req, res) => {
   let type = req.query.type;
@@ -49,25 +38,30 @@ app.get("/drinks", (req, res) => {
   // Checks if /drinks?type=<case> then displays
   switch (type) {
     case 'beer':
-      Promise.resolve(Beer.find().select('name image rating -_id').exec())
-        .then(response => res.json(response));
+      Promise.all([Beer.find().select('name image rating -_id').exec()])
+        .then(([beer]) => res.json({beer}));
       break;
     case 'tea':
-      Promise.resolve(Tea.find().select('name image rating -_id').exec())
-        .then(response => res.json(response));
+      Promise.all([Tea.find().select('name image rating -_id').exec()])
+        .then(([tea]) => res.json({tea}));
       break;
     case 'coffee':
-      Promise.resolve(Coffee.find().select('name image rating -_id').exec())
-        .then(response => res.json(response));
+      Promise.all([Coffee.find().select('name image rating -_id').exec()])
+        .then(([coffee]) => res.json({coffee}));
       break;
     case 'liquor':
-      Promise.resolve(Liquor.find().select('name image rating -_id').exec())
-        .then(response => res.json(response));
+      Promise.all([Liquor.find().select('name image rating -_id').exec()])
+        .then(([liquor]) => res.json({liquor}));
       break;
     // Displays everything as default
     default:
-      Promise.resolve(Drink.find().select('name image rating -_id').exec())
-        .then(response => res.json(response));
+    Promise.all([
+      Tea.find().select('name image rating -_id').exec(),
+      Beer.find().select('name image rating -_id').exec(),
+      Coffee.find().select('name image rating -_id').exec(),
+      Liquor.find().select('name image rating -_id').exec()
+    ]).then(([tea, beer, coffee, liquor]) => 
+      res.json({tea, beer, coffee, liquor}));
       break;
   }
 });
