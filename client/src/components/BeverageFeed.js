@@ -4,17 +4,17 @@ import ReactDOM from "react-dom";
 import RatingStars from "./RatingStars";
 import DisplayCase from "./DisplayCase";
 
-function BeverageFeed() {
+function BeverageFeed(props) {
 
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
 
-  useEffect(() => {
-    fetch('http://localhost:8000/drinks')
-      .then(results => results.json())
-      .then(data => {
-        setData(data.drink);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:8000/drinks')
+  //     .then(results => results.json())
+  //     .then(data => {
+  //       setData(data.drink);
+  //     });
+  // }, []);
 
   function toDisplayCase(id){
     fetch('http://localhost:8000/drinks/' + id)
@@ -31,7 +31,7 @@ function BeverageFeed() {
   return (
     <div className="feed-box">
       <div className="feed-scroll">
-        {data.map(entry => (
+        {props.data.map(entry => (
           <div className="feed-card">
             <img
               className="feed-image"

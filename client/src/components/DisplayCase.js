@@ -57,7 +57,8 @@ function DisplayCase(props) {
         <h3>{props.data.name}</h3>
         <div>{drinkTypeInfo}</div>
         <p>
-          <h4>Tasting Notes:</h4>{props.data.tastingNotes}
+          <h4>Tasting Notes:</h4>
+          {props.data.tastingNotes}
         </p>
         <p>
           <h4>Comments:</h4>{props.data.comments}
