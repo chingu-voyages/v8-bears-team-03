@@ -7,7 +7,7 @@ import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
 
 ReactDOM.render(<BeverageFeed />, document.getElementById("BeverageFeed"));
-ReactDOM.render(<DisplayCase />, document.getElementById("DisplayCase"));
+// ReactDOM.render(<DisplayCase />, document.getElementById("DisplayCase"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

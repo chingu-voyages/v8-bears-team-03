@@ -3,16 +3,16 @@ import RatingStars from "./RatingStars";
 import feedData from "../testData/feedData";
 
 function DisplayCase(props) {
-  props = feedData[0];
+
   let drinkTypeInfo;
-  switch (props.type) {
+  switch (props.data.type) {
     case "beer":
       drinkTypeInfo = (
         <div>
           <h4>Style:</h4>
-          <p>{props.style}</p>
+          <p>{props.data.style}</p>
           <h4>Source:</h4>
-          <p>{props.source}</p>
+          <p>{props.data.source}</p>
         </div>
       );
       break;
@@ -20,11 +20,11 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Bean Type:</h4>
-          <p>{props.beanType}</p>
+          <p>{props.data.beanType}</p>
           <h4>Brew Time:</h4>
-          <p>{props.brewTime}</p>
+          <p>{props.data.brewTime}</p>
           <h4>Strength:</h4>
-          <p>{props.strength}</p>
+          <p>{props.data.strength}</p>
         </div>
       );
       break;
@@ -32,17 +32,17 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Leaf Type:</h4>
-          <p>{props.leaType}</p>
+          <p>{props.data.leafType}</p>
           <h4>Steep Time: </h4>
-          <p>{props.steepTime}</p>
+          <p>{props.data.steepTime}</p>
         </div>
       );
       break;
-    case "liqour":
+    case "liquor":
       drinkTypeInfo = (
         <div>
           <h4>Type:</h4>
-          <p>{props.type}</p>
+          <p>{props.data.type}</p>
         </div>
       );
       break;
@@ -52,17 +52,17 @@ function DisplayCase(props) {
 
   return (
     <div className="display-case-box">
-      <img src={props.image} alt={props.name} />
+      <img src={props.data.image} alt={props.data.name} />
       <div className="display-case-info">
-        <h3>{props.name}</h3>
+        <h3>{props.data.name}</h3>
         <div>{drinkTypeInfo}</div>
         <p>
-          <h4>Tasting Notes:</h4>{props.tastingNotes}
+          <h4>Tasting Notes:</h4>{props.data.tastingNotes}
         </p>
         <p>
-          <h4>Comments:</h4>{props.comments}
+          <h4>Comments:</h4>{props.data.comments}
         </p>
-        <RatingStars rating={props.rating} />
+        <RatingStars rating={props.data.rating} />
       </div>
     </div>
   );

@@ -38,25 +38,25 @@ app.get("/drinks", (req, res) => {
   // Checks if /drinks?type=<case> then displays
   switch (type) {
     case 'beer':
-      Promise.all([Beer.find().select('name image rating -_id').exec()])
+      Promise.all([Beer.find().select('name image rating _id').exec()])
         .then(([beer]) => res.json({beer}));
       break;
     case 'tea':
-      Promise.all([Tea.find().select('name image rating -_id').exec()])
+      Promise.all([Tea.find().select('name image rating _id').exec()])
         .then(([tea]) => res.json({tea}));
       break;
     case 'coffee':
-      Promise.all([Coffee.find().select('name image rating -_id').exec()])
+      Promise.all([Coffee.find().select('name image rating _id').exec()])
         .then(([coffee]) => res.json({coffee}));
       break;
     case 'liquor':
-      Promise.all([Liquor.find().select('name image rating -_id').exec()])
+      Promise.all([Liquor.find().select('name image rating _id').exec()])
         .then(([liquor]) => res.json({liquor}));
       break;
     // Displays everything as default
     default:
     Promise.all([
-      Drink.find().select('name image rating -_id').exec(),
+      Drink.find().select('name image rating _id').exec(),
     ]).then(([drink]) => 
       res.json({drink}));
       break;
