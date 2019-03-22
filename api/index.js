@@ -56,13 +56,18 @@ app.get("/drinks", (req, res) => {
     // Displays everything as default
     default:
     Promise.all([
-      Tea.find().select('name image rating -_id').exec(),
-      Beer.find().select('name image rating -_id').exec(),
-      Coffee.find().select('name image rating -_id').exec(),
-      Liquor.find().select('name image rating -_id').exec()
-    ]).then(([tea, beer, coffee, liquor]) => 
-      res.json({tea, beer, coffee, liquor}));
+      Drink.find().select('name image rating -_id').exec(),
+    ]).then(([drink]) => 
+      res.json({drink}));
       break;
+    // Promise.all([
+    //   Tea.find().select('name image rating -_id').exec(),
+    //   Beer.find().select('name image rating -_id').exec(),
+    //   Coffee.find().select('name image rating -_id').exec(),
+    //   Liquor.find().select('name image rating -_id').exec()
+    // ]).then(([tea, beer, coffee, liquor]) => 
+    //   res.json({tea, beer, coffee, liquor}));
+    //   break;
   }
 });
 
