@@ -1,6 +1,5 @@
 import React from "react";
 import RatingStars from "./RatingStars";
-import feedData from "../testData/feedData";
 
 function DisplayCase(props) {
   let drinkTypeInfo;
