@@ -1,3 +1,5 @@
+// GET by type
+// Default is return all drinks
 exports.getByTypeOrAll = (req, res) => {
   let type = req.query.type;
 
@@ -31,22 +33,24 @@ exports.getByTypeOrAll = (req, res) => {
     default:
       Promise.all([
         Drink.find().select('name image rating _id').exec(),
-      ]).then(([drink]) =>
+      ]).then(([drinks]) =>
         res.json({
-          drink
+          drinks
         }));
       break;
   }
 };
 
+// GET by ID
 exports.getIndividualDrink = (req, res) => {
   let id = req.params.id;
 
   // Show everything but id and v
   Drink.findById(id).select('-_id -__v').then((drink) => {
-    // Check if theres that drink
-    if (!drink) {
-      return res.status(401).send('That drink isnt here');
+
+    // Check if theres that drink and ID is valid
+    if (!drink && !ObjectID.isValid(id)) {
+      return res.status(401).send();
     }
 
     // If there is, then send it back
@@ -58,6 +62,7 @@ exports.getIndividualDrink = (req, res) => {
   });
 };
 
+// POST a drink
 exports.postDrinks = (req, res) => {
   let type = req.body.type;
   let newDrink;
@@ -114,4 +119,3 @@ exports.postDrinks = (req, res) => {
     res.status(400).send(e);
   });
 }
-''
