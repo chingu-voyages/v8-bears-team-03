@@ -104,15 +104,16 @@ main {
   height: 300px;
   width: 95%;
   font-family: 'Josefin Sans';
-  transform: translateX(-140px);
-  width: calc(98% + 140px);
+  transform: translateX(-20px);
+  width: calc(98% + 20px);
+  margin-top: 2rem;
   /* border: 2px solid black; */
 }
 
 .display-case-box {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   padding: 1rem 2rem;
   height: 100%;
   font-family: 'Raleway';
@@ -139,7 +140,13 @@ main {
 }
 
 #DisplayCase img {
-  height: 250px;
+  width: 200px;
+  margin-right: 2rem;
+  box-shadow: 2px 2px 5px rgb(185, 181, 181),
+              2px -2px 5px rgb(185, 181, 181),
+              -2px 2px 5px rgb(185, 181, 181),
+              -2px -2px 5px rgb(185, 181, 181);
+  border-radius: 5px;
 }
 
 
