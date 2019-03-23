@@ -1,4 +1,4 @@
-exports.getAllDrinks = (req, res) => {
+exports.getByTypeOrAll = (req, res) => {
   let type = req.query.type;
 
   // Checks if /drinks?type=<case> then displays
@@ -62,53 +62,44 @@ exports.postDrinks = (req, res) => {
   let type = req.body.type;
   let newDrink;
 
+  // Default Drink Fields
+  let defaultFields = {
+    type,
+    name: req.body.name,
+    tastingNotes: req.body.tastingNotes,
+    comments: req.body.comments,
+    image: req.body.image,
+    rating: req.body.rating
+  }
+
   // Determine which type and store it as that type
   switch (type) {
     case 'beer':
       newDrink = new Beer({
-        type,
-        name: req.body.name,
+        ...defaultFields,
         style: req.body.style,
         source: req.body.source,
-        tastingNotes: req.body.tastingNotes,
-        comments: req.body.comments,
-        image: req.body.image,
-        rating: req.body.rating
       });
       break;
     case 'coffee':
       newDrink = new Coffee({
-        type,
-        name: req.body.name,
+        ...defaultFields,
         beanType: req.body.beanType,
         brewTime: req.body.brewTime,
-        strength: req.body.strength,
-        tastingNotes: req.body.tastingNotes,
-        comments: req.body.comments,
-        image: req.body.image,
-        rating: req.body.rating
+        strength: req.body.strength
       });
       break;
     case 'liquor':
       newDrink = new Liquor({
-        type,
-        name: req.body.name,
-        tastingNotes: req.body.tastingNotes,
-        comments: req.body.comments,
-        image: req.body.image,
-        rating: req.body.rating
+        ...defaultFields,
+        typOfLiquor: req.body.typOfLiquor
       });
       break;
     case 'tea':
       newDrink = new Tea({
-        type,
-        name: req.body.name,
+        ...defaultFields,
         leafType: req.body.leafType,
         steepTime: req.body.steepTime,
-        tastingNotes: req.body.tastingNotes,
-        comments: req.body.comments,
-        image: req.body.image,
-        rating: req.body.rating
       });
       break;
     default:

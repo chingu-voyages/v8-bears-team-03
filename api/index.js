@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 // GET by type and display name, image, rating
-app.get("/drinks", routeDrinks.getAllDrinks);
+app.get("/drinks", routeDrinks.getByTypeOrAll);
 
 // GET by ID and display all info
 app.get('/drinks/:id', routeDrinks.getIndividualDrink);
