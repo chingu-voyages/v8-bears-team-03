@@ -9,7 +9,11 @@ function RatingStars(props) {
     stars.push(<i className="far fa-star" />);
   }
 
-  return <p className="feed-rating">{stars}</p>;
+  return (
+    <p className="feed-rating" key={props.name + props.rating}>
+      {stars}
+    </p>
+  );
 }
 
 export default RatingStars;
