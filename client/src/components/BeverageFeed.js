@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-// import feedData from "../testData/feedData";
 import RatingStars from "./RatingStars";
 import DisplayCase from "./DisplayCase";
 
