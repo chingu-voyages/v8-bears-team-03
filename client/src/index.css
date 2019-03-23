@@ -187,12 +187,14 @@ main {
 
 .feed-image {
   height: 150px;
+  width: 150px;
   margin-bottom: .25rem;
   box-shadow: 2px 2px 5px rgb(185, 181, 181),
               2px -2px 5px rgb(185, 181, 181),
               -2px 2px 5px rgb(185, 181, 181),
               -2px -2px 5px rgb(185, 181, 181);
   border-radius: 5px;
+  align-self: center;
 }
 
 .feed-info-box {

@@ -8,7 +8,6 @@ function BeverageFeed(props) {
     fetch("http://localhost:8000/drinks/" + id)
       .then(results => results.json())
       .then(data => {
-        console.log(data.drink.type);
         ReactDOM.render(
           <DisplayCase data={data.drink} />,
           document.getElementById("DisplayCase")
