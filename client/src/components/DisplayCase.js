@@ -3,7 +3,6 @@ import RatingStars from "./RatingStars";
 import feedData from "../testData/feedData";
 
 function DisplayCase(props) {
-
   let drinkTypeInfo;
   switch (props.data.type) {
     case "beer":
@@ -61,7 +60,8 @@ function DisplayCase(props) {
           {props.data.tastingNotes}
         </p>
         <p>
-          <h4>Comments:</h4>{props.data.comments}
+          <h4>Comments:</h4>
+          {props.data.comments}
         </p>
         <RatingStars rating={props.data.rating} />
       </div>
