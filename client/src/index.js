@@ -9,7 +9,7 @@ fetch("http://localhost:8000/drinks")
   .then(results => results.json())
   .then(data => {
     ReactDOM.render(
-      <BeverageFeed data={data.drink} />,
+      <BeverageFeed data={data.drinks} />,
       document.getElementById("BeverageFeed")
     );
   });
