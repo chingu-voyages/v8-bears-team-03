@@ -2,25 +2,15 @@ import React, { useState, useEffect } from "react";
 import RatingStars from "./RatingStars";
 
 function DisplayCase(props) {
-  const [drink, setDrink] = useState({});
-
-  useEffect(() => {
-    fetch("http://localhost:8000/drinks/" + props.data._id)
-      .then(results => results.json())
-      .then(data => {
-        setDrink(data.drink);
-      });
-  });
-
   let drinkTypeInfo;
-  switch (drink.type) {
+  switch (props.data.type) {
     case "beer":
       drinkTypeInfo = (
         <div>
           <h4>Style:</h4>
-          <p>{drink.style}</p>
+          <p>{props.data.style}</p>
           <h4>Source:</h4>
-          <p>{drink.source}</p>
+          <p>{props.data.source}</p>
         </div>
       );
       break;
@@ -28,11 +18,11 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Bean Type:</h4>
-          <p>{drink.beanType}</p>
-          <h4>Brew Time:</h4>
-          <p>{drink.brewTime}</p>
+          <p>{props.data.beanType}</p>
+          <h4>Brew Type:</h4>
+          <p>{props.data.brewType}</p>
           <h4>Strength:</h4>
-          <p>{drink.strength}</p>
+          <p>{props.data.strength}</p>
         </div>
       );
       break;
@@ -40,9 +30,9 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Leaf Type:</h4>
-          <p>{drink.leafType}</p>
+          <p>{props.data.leafType}</p>
           <h4>Steep Time: </h4>
-          <p>{drink.steepTime}</p>
+          <p>{props.data.steepTime}</p>
         </div>
       );
       break;
@@ -50,7 +40,7 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Type:</h4>
-          <p>{drink.type}</p>
+          <p>{props.data.type}</p>
         </div>
       );
       break;
@@ -60,18 +50,18 @@ function DisplayCase(props) {
 
   return (
     <div className="display-case-box">
-      <img src={drink.image} alt={drink.name} />
+      <img src={props.data.image} alt={props.data.name} />
       <div className="display-case-info">
-        <h3>{drink.name}</h3>
+        <h3>{props.data.name}</h3>
         <div>{drinkTypeInfo}</div>
 
         <h4>Tasting Notes:</h4>
-        <p>{drink.tastingNotes}</p>
+        <p>{props.data.tastingNotes}</p>
 
         <h4>Comments:</h4>
-        <p>{drink.comments}</p>
+        <p>{props.data.comments}</p>
 
-        <RatingStars rating={drink.rating} />
+        <RatingStars rating={props.data.rating} />
       </div>
     </div>
   );
