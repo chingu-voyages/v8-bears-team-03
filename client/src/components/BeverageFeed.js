@@ -12,7 +12,7 @@ function BeverageFeed(props) {
       .then(data => {
         setDrinks(data.drinks);
       });
-  });
+  }, []);
 
   const [drink, setDrink] = useState({});
 
