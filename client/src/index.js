@@ -2,11 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import BeverageFeed from "./components/BeverageFeed";
-import NavBar from "./components/NavBar";
+import App from "./App";
 
-ReactDOM.render(<BeverageFeed />, document.getElementById("BeverageFeed"));
-ReactDOM.render(<NavBar />, document.getElementById("NavBar"));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
