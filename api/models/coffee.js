@@ -9,8 +9,8 @@ const coffeeSchema = new Schema(
     beanType: {
       type: String
     },
-    brewTime: {
-      type: Number
+    brewType: {
+      type: String
     },
     strength: {
       type: Number
