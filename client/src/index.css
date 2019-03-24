@@ -2,7 +2,13 @@
   box-sizing: border-box;
 }
 
-p, img, div, h1, h2, h3, h4 {
+p,
+img,
+div,
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   padding: 0;
 }
@@ -26,10 +32,9 @@ code {
 /* PAGE WRAPPER STYLES */
 /*=====================*/
 
-#page-wrapper {
+.app-container {
   display: flex;
 }
-
 
 /*============*/
 /* NAV STYLES */
@@ -51,10 +56,9 @@ h1 {
   margin: 0 0 1.5rem 0;
   padding: 1rem 0;
   text-align: center;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-size: 4rem;
   color: white;
-
 }
 
 ul {
@@ -65,14 +69,14 @@ ul {
 }
 
 li {
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, 0.5);
   width: 125px;
   height: 2rem;
   line-height: 2rem;
   border: 1px solid clear;
   border-radius: 25px;
   text-align: center;
-  margin: .5rem 2rem;
+  margin: 0.5rem 2rem;
   transition-property: box-shadow;
   transition-duration: 300ms;
 }
@@ -83,9 +87,7 @@ li {
 }
 
 li:hover {
-  box-shadow: 2px 2px 10px white,
-              2px -2px 10px white,
-              -2px 2px 10px white;
+  box-shadow: 2px 2px 10px white, 2px -2px 10px white, -2px 2px 10px white;
 }
 
 /*=====================*/
@@ -103,7 +105,7 @@ main {
 #DisplayCase {
   height: 300px;
   width: 95%;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   transform: translateX(-20px);
   width: calc(98% + 20px);
   margin-top: 2rem;
@@ -115,10 +117,11 @@ main {
   justify-content: left;
   padding: 1rem 2rem;
   height: 100%;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
-.display-case-box h3, .display-case-box h4 {
+.display-case-box h3,
+.display-case-box h4 {
   font-family: "Josefin Sans";
   font-weight: 400;
 }
@@ -133,25 +136,21 @@ main {
 }
 
 .display-case-box p {
-  font-size: .75rem;
-  margin-bottom: .25rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 #DisplayCase img {
   width: 200px;
   margin-right: 2rem;
-  box-shadow: 2px 2px 5px rgb(185, 181, 181),
-              2px -2px 5px rgb(185, 181, 181),
-              -2px 2px 5px rgb(185, 181, 181),
-              -2px -2px 5px rgb(185, 181, 181);
+  box-shadow: 2px 2px 5px rgb(185, 181, 181), 2px -2px 5px rgb(185, 181, 181),
+    -2px 2px 5px rgb(185, 181, 181), -2px -2px 5px rgb(185, 181, 181);
   border-radius: 5px;
 }
-
 
 /*=====================*/
 /* Beverage Feed Styles */
 /*=====================*/
-
 
 #beverage-feed {
   transform: translateX(-350px);
@@ -172,7 +171,7 @@ main {
   overflow: scroll;
   align-items: center;
   height: 90%;
-  padding-left: .50rem;
+  padding-left: 0.5rem;
 }
 
 .feed-card {
@@ -188,22 +187,20 @@ main {
 .feed-image {
   height: 150px;
   width: 150px;
-  margin-bottom: .25rem;
-  box-shadow: 2px 2px 5px rgb(185, 181, 181),
-              2px -2px 5px rgb(185, 181, 181),
-              -2px 2px 5px rgb(185, 181, 181),
-              -2px -2px 5px rgb(185, 181, 181);
+  margin-bottom: 0.25rem;
+  box-shadow: 2px 2px 5px rgb(185, 181, 181), 2px -2px 5px rgb(185, 181, 181),
+    -2px 2px 5px rgb(185, 181, 181), -2px -2px 5px rgb(185, 181, 181);
   border-radius: 5px;
   align-self: center;
 }
 
 .feed-info-box {
-  font-family: 'Raleway';
-  font-size: .75rem;
+  font-family: "Raleway";
+  font-size: 0.75rem;
 }
 
-.feed-rating{
+.feed-rating {
   color: rgba(18, 46, 170, 0.671);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   font-size: 1rem;
 }
