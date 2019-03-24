@@ -15,11 +15,12 @@ function BeverageFeed(props) {
   });
 
   const [drink, setDrink] = useState({});
-        ReactDOM.render(
-          <DisplayCase data={data.drink} />,
-          document.getElementById("DisplayCase")
-        );
-      });
+
+  if (drink.name) {
+    ReactDOM.render(
+      <DisplayCase data={drink} />,
+      document.getElementById("DisplayCase")
+    );
   }
 
   return (
@@ -31,7 +32,7 @@ function BeverageFeed(props) {
               className="feed-image"
               src={entry.image}
               alt={entry.name}
-              onClick={() => toDisplayCase(entry._id)}
+              onClick={() => setDrink(entry)}
             />
             <div className="feed-info-box">
               <p className="feed-title">{entry.name}</p>
