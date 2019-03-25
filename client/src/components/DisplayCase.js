@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import RatingStars from "./RatingStars";
 
 function DisplayCase(props) {
+  const [drink, setDrink] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/drinks/" + props.drinkID)
+      .then(resp => resp.json())
+      .then(resp => setDrink(resp.drink));
+  }, [props.drinkID, setDrink]);
+
   let drinkTypeInfo;
-  switch (props.data.type) {
+  switch (drink.type) {
     case "beer":
       drinkTypeInfo = (
         <div>
           <h4>Style:</h4>
-          <p>{props.data.style}</p>
+          <p>{drink.style}</p>
           <h4>Source:</h4>
-          <p>{props.data.source}</p>
+          <p>{drink.source}</p>
         </div>
       );
       break;
@@ -18,11 +26,11 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Bean Type:</h4>
-          <p>{props.data.beanType}</p>
+          <p>{drink.beanType}</p>
           <h4>Brew Time:</h4>
-          <p>{props.data.brewTime}</p>
+          <p>{drink.brewTime}</p>
           <h4>Strength:</h4>
-          <p>{props.data.strength}</p>
+          <p>{drink.strength}</p>
         </div>
       );
       break;
@@ -30,9 +38,9 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Leaf Type:</h4>
-          <p>{props.data.leafType}</p>
+          <p>{drink.leafType}</p>
           <h4>Steep Time: </h4>
-          <p>{props.data.steepTime}</p>
+          <p>{drink.steepTime}</p>
         </div>
       );
       break;
@@ -40,7 +48,7 @@ function DisplayCase(props) {
       drinkTypeInfo = (
         <div>
           <h4>Type:</h4>
-          <p>{props.data.type}</p>
+          <p>{drink.type}</p>
         </div>
       );
       break;
@@ -49,21 +57,26 @@ function DisplayCase(props) {
   }
 
   return (
-    <div className="display-case-box">
-      <img src={props.data.image} alt={props.data.name} />
-      <div className="display-case-info">
-        <h3>{props.data.name}</h3>
-        <div>{drinkTypeInfo}</div>
+    <section id="display-case">
+      <div id="DisplayCase">
+        <div className="display-case-box">
+          <img src={drink.image} alt={drink.name} />
+          <div className="display-case-info">
+            <h3>{drink.name}</h3>
+            <div>{drinkTypeInfo}</div>
 
-        <h4>Tasting Notes:</h4>
-        <p>{props.data.tastingNotes}</p>
+            <h4>Tasting Notes:</h4>
+            <p>{drink.tastingNotes}</p>
+            <p>{drink._id}</p>
 
-        <h4>Comments:</h4>
-        <p>{props.data.comments}</p>
+            <h4>Comments:</h4>
+            <p>{drink.comments}</p>
 
-        <RatingStars rating={props.data.rating} />
+            <RatingStars rating={drink.rating} />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
