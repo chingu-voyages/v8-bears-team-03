@@ -57,22 +57,26 @@ function DisplayCase(props) {
   }
 
   return (
-    <div className="display-case-box">
-      <img src={drink.image} alt={drink.name} />
-      <div className="display-case-info">
-        <h3>{drink.name}</h3>
-        <div>{drinkTypeInfo}</div>
+    <section id="display-case">
+      <div id="DisplayCase">
+        <div className="display-case-box">
+          <img src={drink.image} alt={drink.name} />
+          <div className="display-case-info">
+            <h3>{drink.name}</h3>
+            <div>{drinkTypeInfo}</div>
 
-        <h4>Tasting Notes:</h4>
-        <p>{drink.tastingNotes}</p>
-        <p>{drink._id}</p>
+            <h4>Tasting Notes:</h4>
+            <p>{drink.tastingNotes}</p>
+            <p>{drink._id}</p>
 
-        <h4>Comments:</h4>
-        <p>{drink.comments}</p>
+            <h4>Comments:</h4>
+            <p>{drink.comments}</p>
 
-        <RatingStars rating={drink.rating} />
+            <RatingStars rating={drink.rating} />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

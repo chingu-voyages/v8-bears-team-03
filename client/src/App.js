@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
 import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
@@ -26,13 +25,15 @@ const App = function() {
   }
 
   return (
-    <div className="page-wrapper">
+    <div id="page-wrapper">
       <NavBar addFilter={addFilter} />
-      <DisplayCase drinkID={drinkFilters.displayCaseID} />
-      <BeverageFeed
-        changeDisplayCase={changeDisplayCase}
-        filterType={drinkFilters.filterType}
-      />
+      <main>
+        <DisplayCase drinkID={drinkFilters.displayCaseID} />
+        <BeverageFeed
+          changeDisplayCase={changeDisplayCase}
+          filterType={drinkFilters.filterType}
+        />
+      </main>
     </div>
   );
 };

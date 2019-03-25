@@ -13,27 +13,29 @@ function BeverageFeed(props) {
   }, [props.filterType, setDrinks]);
 
   return (
-    <div className="feed-box">
-      <div className="feed-scroll">
-        {console.log(drinks)}
-        {drinks.map(entry => (
-          <div className="feed-card" key={entry.name + entry._id}>
-            <img
-              className="feed-image"
-              src={entry.image}
-              alt={entry.name}
-              onClick={() => {
-                props.changeDisplayCase(entry._id);
-              }}
-            />
-            <div className="feed-info-box">
-              <p className="feed-title">{entry.name}</p>
-              <RatingStars rating={entry.rating} />
+    <section id="beverage-feed">
+      <div className="feed-box">
+        <div className="feed-scroll">
+          {console.log(drinks)}
+          {drinks.map(entry => (
+            <div className="feed-card" key={entry.name + entry._id}>
+              <img
+                className="feed-image"
+                src={entry.image}
+                alt={entry.name}
+                onClick={() => {
+                  props.changeDisplayCase(entry._id);
+                }}
+              />
+              <div className="feed-info-box">
+                <p className="feed-title">{entry.name}</p>
+                <RatingStars rating={entry.rating} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
