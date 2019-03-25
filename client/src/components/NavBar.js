@@ -2,32 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import BeverageFeed from "./BeverageFeed";
 
-function NavBar() {
-  function sortDrinks(type) {
-    fetch("http://localhost:8000/drinks?type=" + type)
-      .then(results => results.json())
-      .then(data => {
-        ReactDOM.render(
-          <BeverageFeed data={data[type]} />,
-          document.getElementById("BeverageFeed")
-        );
-      });
-  }
+function NavBar(props) {
 
   return (
     <div>
       <h1>devbev</h1>
       <ul>
-        <li id="beer" onClick={() => sortDrinks("beer")}>
+        <li id="beer" onClick={() => props.addFilter("beer")}>
           beer
         </li>
-        <li id="tea" onClick={() => sortDrinks("tea")}>
+        <li id="tea" onClick={() => props.addFilter("tea")}>
           tea
         </li>
-        <li id="coffee" onClick={() => sortDrinks("coffee")}>
+        <li id="coffee" onClick={() => props.addFilter("coffee")}>
           coffee
         </li>
-        <li id="liquor" onClick={() => sortDrinks("liquor")}>
+        <li id="liquor" onClick={() => props.addFilter("liquor")}>
           liquor
         </li>
         <li id="add">add my drink</li>

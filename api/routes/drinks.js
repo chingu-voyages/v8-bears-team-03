@@ -7,26 +7,26 @@ exports.getByTypeOrAll = (req, res) => {
   switch (type) {
     case 'beer':
       Promise.all([Beer.find().select('name image rating _id').exec()])
-        .then(([beer]) => res.json({
-          beer
+        .then(([drinks]) => res.json({
+          drinks
         }));
       break;
     case 'tea':
       Promise.all([Tea.find().select('name image rating _id').exec()])
-        .then(([tea]) => res.json({
-          tea
+        .then(([drinks]) => res.json({
+          drinks
         }));
       break;
     case 'coffee':
       Promise.all([Coffee.find().select('name image rating _id').exec()])
-        .then(([coffee]) => res.json({
-          coffee
+        .then(([drinks]) => res.json({
+          drinks
         }));
       break;
     case 'liquor':
       Promise.all([Liquor.find().select('name image rating _id').exec()])
-        .then(([liquor]) => res.json({
-          liquor
+        .then(([drinks]) => res.json({
+          drinks
         }));
       break;
       // Displays everything as default
