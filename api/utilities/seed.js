@@ -178,5 +178,60 @@ const feedData = [
     rating: 4,
     leafType: "Red",
     steepTime: 6
+  },
+  {
+    type: "tea",
+    name: "Mango Infusion",
+    tastingNotes: "visually splendid, velvety",
+    comments: "Bold, rich flavor, for the mango lovers!",
+    image:
+      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/tea-382222_1280.jpg",
+    rating: 4,
+    leafType: "Black",
+    steepTime: 5
+  },
+  {
+    type: "liquor",
+    name: "Gin and Soda",
+    tastingNotes: "A refreshing citrus and pine flavor.",
+    comments: "A classic! Best way to kick of a summer evening.",
+    image:
+      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628089/devbev/9863845465_ab80096383_k.jpg",
+    rating: 5,
+    typeOfLiquor: "Gin"
+  },
+  {
+    type: "liquor",
+    name: "Moscow Mule",
+    tastingNotes: "Subtle citrus and spicy, ginger flavor.",
+    comments: "Best enjoed from a copper mug!",
+    image:
+      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/Moscow_Mule_at_Rye__San_Francisco.jpg",
+    rating: 5,
+    typeOfLiquor: "Vodka"
+  },
+  {
+    type: "coffee",
+    name: "Classic Americano",
+    tastingNotes: "Intense, deep coffee notes. Nutty, earthy flavors",
+    comments: "For the true coffee lovers!",
+    image:
+      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/32904240414_e97c8cd77d_b.jpg",
+    rating: 3,
+    beanType: "Colombian",
+    brewType: "Espresso",
+    strength: 5
+  },
+  {
+    type: "beer",
+    name: "HaandBic",
+    tastingNotes:
+      "Moderate sweet flavor, lightly acidic with a smooth tartness and soft carbination",
+    comments: "A unique and hard to find sour beer.",
+    image:
+      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/1024px-Norwegian_sour_beer.jpg",
+    rating: 2,
+    style: "Belgian Fruit Lambic",
+    source: "Haandbryggeriet Brewery"
   }
 ];
