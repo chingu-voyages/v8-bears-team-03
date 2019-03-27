@@ -207,3 +207,46 @@ main {
   margin-top: .5rem;
   font-size: 1rem;
 }
+
+/*=======================*/
+/* Add Drink Form Styles */
+/*=======================*/
+
+form {
+  height: 300px;
+  width: 95%;
+  font-family: 'Josefin Sans';
+  transform: translateX(-350px);
+  width: calc(98% + 350px);
+  margin-top: 2rem;
+  display: flex;
+}
+
+form div {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#form-picture {
+  align-self: center;
+  justify-self: center;
+  width: 200px;
+  text-align: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: .25rem 0;
+}
+
+input, select, textarea {
+  margin: .25rem;
+  width: 100%;
+}
+
+#form-text {
+  display: flex;
+  flex-direction: row;
+}

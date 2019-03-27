@@ -3,6 +3,7 @@ import "./App.css";
 import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
 import NavBar from "./components/NavBar";
+import AddMyDrinkForm from "./components/AddMyDrinkForm";
 
 const App = function() {
   const [drinkFilters, setDrinkID] = useState({
@@ -33,6 +34,9 @@ const App = function() {
           changeDisplayCase={changeDisplayCase}
           filterType={drinkFilters.filterType}
         />
+        <aside className="add-my-drink-modal">
+          <AddMyDrinkForm />
+        </aside>
       </main>
     </div>
   );
