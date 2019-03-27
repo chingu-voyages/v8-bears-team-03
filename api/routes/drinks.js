@@ -1,3 +1,5 @@
+const validateDrinkInput = require("../validation/drink");
+
 // GET by type
 // Default is return all drinks
 exports.getByTypeOrAll = (req, res) => {
@@ -5,38 +7,61 @@ exports.getByTypeOrAll = (req, res) => {
 
   // Checks if /drinks?type=<case> then displays
   switch (type) {
-    case 'beer':
-      Promise.all([Beer.find().select('name image rating _id').exec()])
-        .then(([drinks]) => res.json({
-          drinks
-        }));
-      break;
-    case 'tea':
-      Promise.all([Tea.find().select('name image rating _id').exec()])
-        .then(([drinks]) => res.json({
-          drinks
-        }));
-      break;
-    case 'coffee':
-      Promise.all([Coffee.find().select('name image rating _id').exec()])
-        .then(([drinks]) => res.json({
-          drinks
-        }));
-      break;
-    case 'liquor':
-      Promise.all([Liquor.find().select('name image rating _id').exec()])
-        .then(([drinks]) => res.json({
-          drinks
-        }));
-      break;
-      // Displays everything as default
-    default:
+    case "beer":
       Promise.all([
-        Drink.find().select('name image rating _id').exec(),
+        Beer.find()
+          .select("name image rating _id")
+          .exec()
       ]).then(([drinks]) =>
         res.json({
           drinks
-        }));
+        })
+      );
+      break;
+    case "tea":
+      Promise.all([
+        Tea.find()
+          .select("name image rating _id")
+          .exec()
+      ]).then(([drinks]) =>
+        res.json({
+          drinks
+        })
+      );
+      break;
+    case "coffee":
+      Promise.all([
+        Coffee.find()
+          .select("name image rating _id")
+          .exec()
+      ]).then(([drinks]) =>
+        res.json({
+          drinks
+        })
+      );
+      break;
+    case "liquor":
+      Promise.all([
+        Liquor.find()
+          .select("name image rating _id")
+          .exec()
+      ]).then(([drinks]) =>
+        res.json({
+          drinks
+        })
+      );
+      break;
+    // Displays everything as default
+    default:
+      Promise.all([
+        Drink.find()
+          .select("name image rating _id")
+          .exec()
+      ]).then(([drinks]) =>
+        res.json({
+          drinks
+        })
+      );
       break;
   }
 };
@@ -46,24 +71,34 @@ exports.getIndividualDrink = (req, res) => {
   let id = req.params.id;
 
   // Show everything but id and v
-  Drink.findById(id).select('-_id -__v').then((drink) => {
+  Drink.findById(id)
+    .select("-_id -__v")
+    .then(
+      drink => {
+        // Check if theres that drink and ID is valid
+        if (!drink && !ObjectID.isValid(id)) {
+          return res.status(401).send();
+        }
 
-    // Check if theres that drink and ID is valid
-    if (!drink && !ObjectID.isValid(id)) {
-      return res.status(401).send();
-    }
-
-    // If there is, then send it back
-    res.send({
-      drink
-    });
-  }, (e) => {
-    res.status(400).send(e);
-  });
+        // If there is, then send it back
+        res.send({
+          drink
+        });
+      },
+      e => {
+        res.status(400).send(e);
+      }
+    );
 };
 
 // POST a drink
 exports.postDrinks = (req, res) => {
+  const { error } = validateDrinkInput(req.body);
+
+  if (error) {
+    return res.status(400).json(error);
+  }
+
   let type = req.body.type;
   let newDrink;
 
@@ -75,18 +110,18 @@ exports.postDrinks = (req, res) => {
     comments: req.body.comments,
     image: req.body.image,
     rating: req.body.rating
-  }
+  };
 
   // Determine which type and store it as that type
   switch (type) {
-    case 'beer':
+    case "beer":
       newDrink = new Beer({
         ...defaultFields,
         style: req.body.style,
-        source: req.body.source,
+        source: req.body.source
       });
       break;
-    case 'coffee':
+    case "coffee":
       newDrink = new Coffee({
         ...defaultFields,
         beanType: req.body.beanType,
@@ -94,28 +129,31 @@ exports.postDrinks = (req, res) => {
         strength: req.body.strength
       });
       break;
-    case 'liquor':
+    case "liquor":
       newDrink = new Liquor({
         ...defaultFields,
         typOfLiquor: req.body.typOfLiquor
       });
       break;
-    case 'tea':
+    case "tea":
       newDrink = new Tea({
         ...defaultFields,
         leafType: req.body.leafType,
-        steepTime: req.body.steepTime,
+        steepTime: req.body.steepTime
       });
       break;
     default:
-      console.log('Please select an apprioriate drink');
+      console.log("Please select an apprioriate drink");
       break;
   }
 
   // Saves POST and sends it back as well. If not, then error
-  newDrink.save().then((drink) => {
-    res.send(drink);
-  }, (e) => {
-    res.status(400).send(e);
-  });
-}
+  newDrink.save().then(
+    drink => {
+      res.send(drink);
+    },
+    e => {
+      res.status(400).send(e);
+    }
+  );
+};
