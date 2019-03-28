@@ -4,24 +4,41 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const {
-  ObjectID
-} = require('mongodb');
+const { ObjectID } = require("mongodb");
 
 // Initialize the Express App
 const app = express();
 
 // Local files required
-const Beer = require('./models/beer');
-const Coffee = require('./models/coffee');
-const Liquor = require('./models/liquor');
-const Tea = require('./models/tea');
-const Drink = require('./models/drink');
-const routeDrinks = require('./routes/drinks');
+const Beer = require("./models/beer");
+const Coffee = require("./models/coffee");
+const Liquor = require("./models/liquor");
+const Tea = require("./models/tea");
+const Drink = require("./models/drink");
+const routeDrinks = require("./routes/drinks");
+
+// Set environment variables
+const config = require("./utilities/config");
+
+let dbUrl;
+
+if (process.env.NODE_ENV === "production") {
+  dbUrl = `mongodb://${global.gConfig.MONGO_USERNAME}:${
+    global.gConfig.MONGO_PASSWORD
+  }@${global.gConfig.MONGO_HOSTNAME}:${global.gConfig.MONGO_PORT}/${
+    global.gConfig.MONGO_DB
+  }?authSource=admin`;
+} else {
+  dbUrl = `mongodb://${global.gConfig.MONGO_HOSTNAME}:${
+    global.gConfig.MONGO_PORT
+  }/${global.gConfig.MONGO_DB}`;
+}
+
+console.log(`${global.gConfig.CONFIG_ID} variables loaded`);
 
 // Mongoose Connect
 mongoose
-  .connect("mongodb://localhost:27017/devbev", {
+  .connect(dbUrl, {
     useNewUrlParser: true
   })
   .then(() => {
@@ -34,21 +51,23 @@ mongoose
 // Apply body Parser and server public assets and routes
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 app.use(cors());
 
 // GET by type and display name, image, rating
 app.get("/drinks", routeDrinks.getByTypeOrAll);
 
 // GET by ID and display all info
-app.get('/drinks/:id', routeDrinks.getIndividualDrink);
+app.get("/drinks/:id", routeDrinks.getIndividualDrink);
 
 // POST /drink
-app.post('/drinks', routeDrinks.postDrinks);
+app.post("/drinks", routeDrinks.postDrinks);
 
 // Start app
-app.listen(8000, "localhost", () => {
-  console.log("listening on port 8000");
+app.listen(global.gConfig.NODE_PORT, () => {
+  console.log(`listening on port ${global.gConfig.NODE_PORT}`);
 });
