@@ -21,7 +21,7 @@ const drinkSchema = new Schema(
     },
     image: {
       type: String,
-      // required: true
+      required: true
     },
     rating: {
       type: Number,

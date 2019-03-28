@@ -15,6 +15,17 @@ function AddMyDrinkForm(props) {
   const [primaryImage, setPrimaryImage] = useState(placeholder);
   const [fallbackImage, setFallbackImage] = useState(placeholder);
 
+  function resetForm() {
+    setType("beer");
+    setName("");
+    setTastingNotes("");
+    setComments("");
+    setRating(1);
+    setImageRef("");
+    setPrimaryImage(placeholder);
+    setFallbackImage(placeholder);
+  }
+
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
       {
@@ -84,6 +95,8 @@ function AddMyDrinkForm(props) {
       .then(res => res.json())
       .then(response => console.log("Success:", JSON.stringify(response)))
       .catch(error => console.error("Error:", error));
+    
+    resetForm();
   }
 
   return (
