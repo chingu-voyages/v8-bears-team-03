@@ -56,10 +56,11 @@ function AddMyDrinkForm(props) {
           console.log(err);
         }
         if (info.event === "success") {
+          // console.log(info);
           setPrimaryImage(info.info.eager[0].url);
           setFallbackImage(info.info.eager[1].url);
-          setImageRef(info.info.public_id);
-          console.log(imageRef);
+          setImageRef("v" + info.info.version + "/" + info.info.public_id);
+          // console.log(imageRef);
         }
       }
     );
