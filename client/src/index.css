@@ -177,7 +177,7 @@ main {
 
 .feed-card {
   height: 200px;
-  width: 200px;
+  /* width: 200px; */
   margin: 0 1rem 0 0;
   display: flex;
   flex-direction: column;
@@ -187,7 +187,6 @@ main {
 
 .feed-image {
   height: 150px;
-  width: 150px;
   margin-bottom: .25rem;
   box-shadow: 2px 2px 5px rgb(185, 181, 181),
               2px -2px 5px rgb(185, 181, 181),
