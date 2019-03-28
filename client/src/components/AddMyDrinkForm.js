@@ -95,7 +95,7 @@ function AddMyDrinkForm(props) {
       .then(res => res.json())
       .then(response => console.log("Success:", JSON.stringify(response)))
       .catch(error => console.error("Error:", error));
-    
+
     resetForm();
   }
 
@@ -109,7 +109,7 @@ function AddMyDrinkForm(props) {
         </picture>
       </div>
 
-      <div>
+      <div id="form-text">
         <div id="form-general-info">
           <label htmlFor="type">
             What Type of Drink:
@@ -174,6 +174,11 @@ function AddMyDrinkForm(props) {
           </label>
         </div>
 
+        {type === "beer" ? <BeerFormInputs /> : null}
+        {type === "coffee" ? <CoffeeFormInputs /> : null}
+        {type === "tea" ? <TeaFormInputs /> : null}
+        {type === "liquor" ? <LiquorFormInputs /> : null}
+
         <label>
           <input
             type="hidden"
@@ -183,11 +188,10 @@ function AddMyDrinkForm(props) {
           />
         </label>
       </div>
-      {type === "beer" ? <BeerFormInputs /> : null}
-      {type === "coffee" ? <CoffeeFormInputs /> : null}
-      {type === "tea" ? <TeaFormInputs /> : null}
-      {type === "liquor" ? <LiquorFormInputs /> : null}
       <button type="submit">Submit</button>
+      <span id="close-modal" onClick={() => props.addDrinkForm()}>
+        X
+      </span>
     </form>
   );
 }

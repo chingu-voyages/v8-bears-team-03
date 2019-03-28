@@ -71,7 +71,11 @@ function DisplayCase(props) {
               srcSet={imagePrefix + drink.image + ".png"}
               type="image/png"
             />
-            <img src={imagePrefix + drink.image + ".png"} alt={drink.name} />
+            <img
+              id="display-case-image"
+              src={imagePrefix + drink.image + ".png"}
+              alt={drink.name}
+            />
           </picture>
           <div className="display-case-info">
             <h3>{drink.name}</h3>
