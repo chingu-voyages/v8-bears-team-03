@@ -3,6 +3,8 @@ import RatingStars from "./RatingStars";
 
 function DisplayCase(props) {
   const [drink, setDrink] = useState([]);
+  const imagePrefix =
+    "https://res.cloudinary.com/devbev/image/upload/c_scale,w_300/";
 
   useEffect(() => {
     fetch("http://localhost:8000/drinks/" + props.drinkID)
@@ -60,7 +62,17 @@ function DisplayCase(props) {
     <section id="display-case">
       <div id="DisplayCase">
         <div className="display-case-box">
-          <img src={drink.image} alt={drink.name} />
+          <picture>
+            <source
+              srcSet={imagePrefix + drink.image + ".webp"}
+              type="image/webp"
+            />
+            <source
+              srcSet={imagePrefix + drink.image + ".png"}
+              type="image/png"
+            />
+            <img src={imagePrefix + drink.image + ".png"} alt={drink.name} />
+          </picture>
           <div className="display-case-info">
             <h3>{drink.name}</h3>
             <div>{drinkTypeInfo}</div>
