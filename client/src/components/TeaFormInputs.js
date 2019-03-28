@@ -9,6 +9,7 @@ function TeaFormInputs() {
       <label>
         Leaf Type:
         <input
+          type="text"
           name="leafType"
           value={leafType}
           placeholder="Red..."
@@ -16,11 +17,12 @@ function TeaFormInputs() {
         />
       </label>
       <label>
-        Steep Time:
+        Steep Time: (Number)
         <input
-          name="steeptime"
+          type="number"
+          name="steepTime"
           value={steepTime}
-          placeholder="5 Minutes..."
+          placeholder="Number of Minutes..."
           onChange={e => setSteepTime(e.target.value)}
         />
       </label>

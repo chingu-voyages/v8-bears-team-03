@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function CoffeeFormInputs() {
   const [beanType, setBeanType] = useState();
-  const [brewType, setBrewType] = useState();
+  const [brewTime, setBrewTime] = useState();
   const [strength, setStrength] = useState();
 
   return (
@@ -10,6 +10,7 @@ function CoffeeFormInputs() {
       <label>
         Bean Type:
         <input
+          type="text"
           name="beanType"
           value={beanType}
           placeholder="Arabica..."
@@ -17,20 +18,22 @@ function CoffeeFormInputs() {
         />
       </label>
       <label>
-        Brew Syle:
+        Brew Time: (Number)
         <input
-          name="brewType"
-          value={brewType}
-          placeholder="French Press..."
-          onChange={e => setBrewType(e.target.value)}
+          type="number"
+          name="brewTime"
+          value={brewTime}
+          placeholder="Number of Minutes..."
+          onChange={e => setBrewTime(e.target.value)}
         />
       </label>
       <label>
-        Strength
+        Strength: (Number)
         <input
+          type="number"
           name="strength"
           value={strength}
-          placeholder="Strong..."
+          placeholder="1 (weak) to 10 (strong)..."
           onChange={e => setStrength(e.target.value)}
         />
       </label>

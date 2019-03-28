@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import RatingStars from "./RatingStars";
-import DisplayCase from "./DisplayCase";
 
 function BeverageFeed(props) {
   const [drinks, setDrinks] = useState([]);
@@ -16,7 +14,6 @@ function BeverageFeed(props) {
     <section id="beverage-feed">
       <div className="feed-box">
         <div className="feed-scroll">
-          {console.log(drinks)}
           {drinks.map(entry => (
             <div className="feed-card" key={entry.name + entry._id}>
               <img
