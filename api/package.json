@@ -19,7 +19,8 @@
     "mongodb": "^3.2.2",
     "mongoose": "^5.4.19",
     "morgan": "^1.9.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "superagent": "^5.0.2"
   },
   "devDependencies": {
     "eslint": "^5.15.2",
