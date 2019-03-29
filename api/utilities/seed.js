@@ -231,8 +231,4 @@ const feedData = [{
   }
 ];
 
-module.exports = {
-  clearDatabase,
-  createDrink,
-  feedData
-};
+module.exports = {clearDatabase, createDrink, feedData};
