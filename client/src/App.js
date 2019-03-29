@@ -10,6 +10,7 @@ const App = function() {
     displayCaseID: "5c9426bc0b23805d70e3c536",
     filterType: ""
   });
+  const [showInputForm, setShowInputForm] = useState(false);
 
   function changeDisplayCase(id) {
     setDrinkID({
@@ -25,18 +26,24 @@ const App = function() {
     });
   }
 
+  function showAddDrinkForm(){
+    setShowInputForm(!showInputForm);
+  }
+
   return (
     <div id="page-wrapper">
-      <NavBar addFilter={addFilter} />
+      <NavBar addFilter={addFilter} addDrinkForm={showAddDrinkForm} />
       <main>
         <DisplayCase drinkID={drinkFilters.displayCaseID} />
         <BeverageFeed
           changeDisplayCase={changeDisplayCase}
           filterType={drinkFilters.filterType}
         />
-        <aside className="add-my-drink-modal">
-          <AddMyDrinkForm />
-        </aside>
+        {showInputForm ? (
+          <aside id="add-my-drink-modal">
+            <AddMyDrinkForm addDrinkForm={showAddDrinkForm} />
+          </aside>
+        ) : null}
       </main>
     </div>
   );

@@ -21,7 +21,9 @@ function NavBar(props) {
           <li id="liquor" onClick={() => props.addFilter("liquor")}>
             liquor
           </li>
-          <li id="add">add my drink</li>
+          <li id="add" onClick={() => props.addDrinkForm()}>
+            add my drink
+          </li>
         </ul>
       </div>
     </nav>

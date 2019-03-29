@@ -8,7 +8,8 @@ function LiquorFormInputs() {
       <label>
         Style:
         <input
-          name="style"
+          type="text"
+          name="typeOfLiquor"
           value={style}
           placeholder="Bourbon"
           onChange={e => setStyle(e.target.value)}

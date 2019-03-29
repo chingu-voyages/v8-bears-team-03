@@ -9,6 +9,7 @@ function BeerFormInputs() {
       <label>
         Style:
         <input
+          type="text"
           name="style"
           value={style}
           placeholder="IPA..."
@@ -18,6 +19,7 @@ function BeerFormInputs() {
       <label>
         Brewery
         <input
+          type="text"
           name="source"
           value={source}
           placeholder="New Holland..."
@@ -28,4 +30,4 @@ function BeerFormInputs() {
   );
 }
 
-export default BeerFormInputs
+export default BeerFormInputs;

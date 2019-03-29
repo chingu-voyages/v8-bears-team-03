@@ -5,48 +5,119 @@ import TeaFormInputs from "./TeaFormInputs";
 import LiquorFormInputs from "./LiquorFormInputs";
 
 function AddMyDrinkForm(props) {
+  const placeholder = require("../images/upload_placeholder_300x300.png");
   const [type, setType] = useState("beer");
-  const [name, setName] = useState("");
-  const [tastingNotes, setTastingNotes] = useState("");
-  const [comments, setComments] = useState("");
+  const [name, setName] = useState();
+  const [tastingNotes, setTastingNotes] = useState();
+  const [comments, setComments] = useState();
   const [rating, setRating] = useState();
-  const [image, setImage] = useState(
-    "https://drive.google.com/uc?id=1vGeUvc38RHMWKTjcAtZb6JFXkBmKRP8p"
-  );
+  const [imageRef, setImageRef] = useState();
+  const [primaryImage, setPrimaryImage] = useState(placeholder);
+  const [fallbackImage, setFallbackImage] = useState(placeholder);
 
-  function handleFile(e) {
-    const file = e.target.files[0];
-    const imageType = /image.*/;
+  function resetForm() {
+    setType("beer");
+    setName("");
+    setTastingNotes("");
+    setComments("");
+    setRating(1);
+    setImageRef("");
+    setPrimaryImage(placeholder);
+    setFallbackImage(placeholder);
+  }
 
-    if (file.type.match(imageType)) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert("Please choose an accepted image file.");
+  function showUploadWidget() {
+    window.cloudinary.openUploadWidget(
+      {
+        cloudName: "devbev",
+        uploadPreset: "addBeveragePreset",
+        sources: ["local", "url", "camera"],
+        googleApiKey: "<image_search_google_api_key>",
+        showAdvancedOptions: true,
+        cropping: true,
+        multiple: false,
+        defaultSource: "local",
+        styles: {
+          palette: {
+            window: "#464040",
+            sourceBg: "#292222",
+            windowBorder: "#c7a49f",
+            tabIcon: "#cc6600",
+            inactiveTabIcon: "#E8D5BB",
+            menuIcons: "#ebe5db",
+            link: "#ffb107",
+            action: "#ffcc00",
+            inProgress: "#99cccc",
+            complete: "#78b3b4",
+            error: "#ff6666",
+            textDark: "#4C2F1A",
+            textLight: "#D8CFCF"
+          },
+          fonts: {
+            default: null,
+            "'Merriweather', serif": {
+              url: "https://fonts.googleapis.com/css?family=Merriweather",
+              active: true
+            }
+          }
+        }
+      },
+      (err, info) => {
+        if (err) {
+          console.log(err);
+        }
+        if (info.event === "success") {
+          // console.log(info);
+          setPrimaryImage(info.info.eager[0].url);
+          setFallbackImage(info.info.eager[1].url);
+          setImageRef("v" + info.info.version + "/" + info.info.public_id);
+          // console.log(imageRef);
+        }
+      }
+    );
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    let data = new FormData(e.target);
+    let drinkData = {};
+    for (var [key, value] of data.entries()) {
+      drinkData[key] = value;
     }
+
+    fetch("http://localhost:8000/drinks", {
+      method: "POST",
+      body: JSON.stringify(drinkData),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(response => console.log("Success:", JSON.stringify(response)))
+      .catch(error => console.error("Error:", error));
+
+    resetForm();
   }
 
   return (
-    <form>
+    <form id="drinkInputForm" onSubmit={handleSubmit}>
       <div id="form-picture">
-        <label>
-          Upload Image
-          <input type="file" id="imageFile" onChange={e => handleFile(e)} />
-        </label>
-        <img src={image} id="upload-image" alt="Upload File" />
+        <picture onClick={showUploadWidget}>
+          <source srcSet={primaryImage} type="image/webp" />
+          <source srcSet={fallbackImage} type="image/png" />
+          <img src={fallbackImage} alt="your upload" />
+        </picture>
       </div>
 
       <div id="form-text">
         <div id="form-general-info">
-          <label>
+          <label htmlFor="type">
             What Type of Drink:
             <select
               name="type"
               value={type}
               onChange={e => setType(e.target.value)}
+              // required
             >
               <option value="beer">Beer</option>
               <option value="coffee">Coffee</option>
@@ -58,10 +129,12 @@ function AddMyDrinkForm(props) {
           <label>
             Name of Drink:
             <input
+              type="text"
               name="name"
               value={name}
               placeholder="Dragon's Milk..."
               onChange={e => setName(e.target.value)}
+              // required
             />
           </label>
 
@@ -90,6 +163,7 @@ function AddMyDrinkForm(props) {
               name="rating"
               value={rating}
               onChange={e => setRating(e.target.value)}
+              // required
             >
               <option value={1}>1/5</option>
               <option value={2}>2/5</option>
@@ -104,7 +178,20 @@ function AddMyDrinkForm(props) {
         {type === "coffee" ? <CoffeeFormInputs /> : null}
         {type === "tea" ? <TeaFormInputs /> : null}
         {type === "liquor" ? <LiquorFormInputs /> : null}
+
+        <label>
+          <input
+            type="hidden"
+            name="image"
+            value={imageRef}
+            onChange={e => setImageRef(e.target.value)}
+          />
+        </label>
       </div>
+      <button type="submit">Submit</button>
+      <span id="close-modal" onClick={() => props.addDrinkForm()}>
+        X
+      </span>
     </form>
   );
 }

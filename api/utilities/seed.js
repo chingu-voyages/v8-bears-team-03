@@ -64,7 +64,7 @@ const feedData = [
     name: "Dragon's Milk",
     tastingNotes: "Dark and Rich",
     comments: "pairs well with prototyping in JavaScript",
-    image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
+    image: "v1553796035/drinkImages/jamz5it9b0qeo06lqasq",
     rating: 3,
     style: "Stout aged in Bourbon Casks",
     source: "New Holland Brewing"
@@ -74,7 +74,7 @@ const feedData = [
     name: "Gingerbread Cold Brew",
     tastingNotes: "slightly spicy with a hint of orange",
     comments: "",
-    image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
+    image: "v1553796799/drinkImages/u0egi5gpb6gw8h9makff",
     rating: 4,
     beanType: "Arabica",
     brewType: "Cold Brew",
@@ -85,7 +85,7 @@ const feedData = [
     name: "Angel's Envy",
     tastingNotes: "smooth yet fiery, finishes with a hint of port",
     comments: "excellent!",
-    image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
+    image: "v1553796896/drinkImages/vznl3uuxabrcpm4y5rxn",
     rating: 5,
     typeOfLiquor: "Bourbon"
   },
@@ -94,98 +94,97 @@ const feedData = [
     name: "Laager",
     tastingNotes: "delicate and fruity",
     comments: "great African tea!",
-    image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
+    image: "v1553796967/drinkImages/slm2vndz6ikn3ntdit5b",
     rating: 4,
     leafType: "Red",
     steepTime: 5
   },
-  {
-    type: "beer",
-    name: "Dragon's Milk",
-    tastingNotes: "Dark and Rich",
-    comments: "pairs well with prototyping in JavaScript",
-    image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
-    rating: 3,
-    style: "Stout aged in Bourbon Casks",
-    source: "New Holland Brewing"
-  },
-  {
-    type: "coffee",
-    name: "Gingerbread Cold Brew",
-    tastingNotes: "slightly spicy with a hint of orange",
-    comments: "",
-    image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
-    rating: 4,
-    beanType: "Arabica",
-    brewType: "Cold Brew",
-    strength: 3
-  },
-  {
-    type: "liquor",
-    name: "Angel's Envy",
-    tastingNotes: "smooth yet fiery, finishes with a hint of port",
-    comments: "excellent!",
-    image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
-    rating: 5,
-    typeOfLiquor: "Bourbon"
-  },
-  {
-    type: "tea",
-    name: "Laager",
-    tastingNotes: "delicate and fruity",
-    comments: "great African tea!",
-    image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
-    rating: 4,
-    leafType: "Red",
-    steepTime: 5
-  },
-  {
-    type: "beer",
-    name: "Dragon's Milk",
-    tastingNotes: "Dark and Rich",
-    comments: "pairs well with prototyping in JavaScript",
-    image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
-    rating: 3,
-    style: "Stout aged in Bourbon Casks",
-    source: "New Holland Brewing"
-  },
-  {
-    type: "coffee",
-    name: "Gingerbread Cold Brew",
-    tastingNotes: "slightly spicy with a hint of orange",
-    comments: "",
-    image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
-    rating: 4,
-    beanType: "Arabica",
-    brewType: "Cold Brew",
-    strength: 5
-  },
-  {
-    type: "liquor",
-    name: "Angel's Envy",
-    tastingNotes: "smooth yet fiery, finishes with a hint of port",
-    comments: "excellent!",
-    image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
-    rating: 5,
-    typeOfLiquor: "Bourbon"
-  },
-  {
-    type: "tea",
-    name: "Laager",
-    tastingNotes: "delicate and fruity",
-    comments: "great African tea!",
-    image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
-    rating: 4,
-    leafType: "Red",
-    steepTime: 6
-  },
+  // {
+  //   type: "beer",
+  //   name: "Dragon's Milk",
+  //   tastingNotes: "Dark and Rich",
+  //   comments: "pairs well with prototyping in JavaScript",
+  //   image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
+  //   rating: 3,
+  //   style: "Stout aged in Bourbon Casks",
+  //   source: "New Holland Brewing"
+  // },
+  // {
+  //   type: "coffee",
+  //   name: "Gingerbread Cold Brew",
+  //   tastingNotes: "slightly spicy with a hint of orange",
+  //   comments: "",
+  //   image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
+  //   rating: 4,
+  //   beanType: "Arabica",
+  //   brewType: "Cold Brew",
+  //   strength: 3
+  // },
+  // {
+  //   type: "liquor",
+  //   name: "Angel's Envy",
+  //   tastingNotes: "smooth yet fiery, finishes with a hint of port",
+  //   comments: "excellent!",
+  //   image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
+  //   rating: 5,
+  //   typeOfLiquor: "Bourbon"
+  // },
+  // {
+  //   type: "tea",
+  //   name: "Laager",
+  //   tastingNotes: "delicate and fruity",
+  //   comments: "great African tea!",
+  //   image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
+  //   rating: 4,
+  //   leafType: "Red",
+  //   steepTime: 5
+  // },
+  // {
+  //   type: "beer",
+  //   name: "Dragon's Milk",
+  //   tastingNotes: "Dark and Rich",
+  //   comments: "pairs well with prototyping in JavaScript",
+  //   image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
+  //   rating: 3,
+  //   style: "Stout aged in Bourbon Casks",
+  //   source: "New Holland Brewing"
+  // },
+  // {
+  //   type: "coffee",
+  //   name: "Gingerbread Cold Brew",
+  //   tastingNotes: "slightly spicy with a hint of orange",
+  //   comments: "",
+  //   image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
+  //   rating: 4,
+  //   beanType: "Arabica",
+  //   brewType: "Cold Brew",
+  //   strength: 5
+  // },
+  // {
+  //   type: "liquor",
+  //   name: "Angel's Envy",
+  //   tastingNotes: "smooth yet fiery, finishes with a hint of port",
+  //   comments: "excellent!",
+  //   image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
+  //   rating: 5,
+  //   typeOfLiquor: "Bourbon"
+  // },
+  // {
+  //   type: "tea",
+  //   name: "Laager",
+  //   tastingNotes: "delicate and fruity",
+  //   comments: "great African tea!",
+  //   image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
+  //   rating: 4,
+  //   leafType: "Red",
+  //   steepTime: 6
+  // },
   {
     type: "tea",
     name: "Mango Infusion",
     tastingNotes: "visually splendid, velvety",
     comments: "Bold, rich flavor, for the mango lovers!",
-    image:
-      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/tea-382222_1280.jpg",
+    image: "v1553797087/drinkImages/w7kzqvz9fqbgrdac042v",
     rating: 4,
     leafType: "Black",
     steepTime: 5
@@ -195,8 +194,7 @@ const feedData = [
     name: "Gin and Soda",
     tastingNotes: "A refreshing citrus and pine flavor.",
     comments: "A classic! Best way to kick of a summer evening.",
-    image:
-      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628089/devbev/9863845465_ab80096383_k.jpg",
+    image: "v1553797147/drinkImages/dkcfkgi29ved4pfrtyxb",
     rating: 5,
     typeOfLiquor: "Gin"
   },
@@ -205,8 +203,7 @@ const feedData = [
     name: "Moscow Mule",
     tastingNotes: "Subtle citrus and spicy, ginger flavor.",
     comments: "Best enjoed from a copper mug!",
-    image:
-      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/Moscow_Mule_at_Rye__San_Francisco.jpg",
+    image: "v1553797196/drinkImages/jluudzf9dqrjhbjo5ohw",
     rating: 5,
     typeOfLiquor: "Vodka"
   },
@@ -215,8 +212,7 @@ const feedData = [
     name: "Classic Americano",
     tastingNotes: "Intense, deep coffee notes. Nutty, earthy flavors",
     comments: "For the true coffee lovers!",
-    image:
-      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/32904240414_e97c8cd77d_b.jpg",
+    image: "v1553797240/drinkImages/qqwvqkxmlxuqdmjq1nhl",
     rating: 3,
     beanType: "Colombian",
     brewType: "Espresso",
@@ -228,8 +224,7 @@ const feedData = [
     tastingNotes:
       "Moderate sweet flavor, lightly acidic with a smooth tartness and soft carbination",
     comments: "A unique and hard to find sour beer.",
-    image:
-      "https://res.cloudinary.com/dk9vbfmw6/image/upload/v1553628073/devbev/1024px-Norwegian_sour_beer.jpg",
+    image: "v1553797280/drinkImages/ld8pfapz6u4uiacltpqe",
     rating: 2,
     style: "Belgian Fruit Lambic",
     source: "Haandbryggeriet Brewery"

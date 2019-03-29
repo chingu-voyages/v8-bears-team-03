@@ -10,7 +10,8 @@ const drinkSchema = Joi.object().keys({
     .required(),
   tastingNotes: Joi.string().required(),
   comments: Joi.string().allow(""),
-  image: Joi.string().required(),
+  // image: Joi.string().required(),
+  image: Joi.string().allow(""),
   rating: Joi.number()
     .integer()
     .min(1)
