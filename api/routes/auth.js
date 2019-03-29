@@ -7,7 +7,7 @@ const config = require("../utilities/config");
 const GITHUB_CLIENT_ID = global.gConfig.GITHUB_CLIENT_ID;
 const GITHUB_CLIENT_SECRET = global.gConfig.GITHUB_CLIENT_SECRET;
 
-module.exports = auth = (req, res, next) => {
+module.exports = auth = (req, res) => {
   const { code } = req.query;
 
   request
@@ -33,8 +33,12 @@ module.exports = auth = (req, res, next) => {
           });
 
           User.find({ username: user.login }, (err, arr) => {
-            if (arr.length > 0) {
-              res.send(arr[0]);
+            if (err) {
+              res.send(err);
+            } else {
+              if (arr.length > 0) {
+                res.send(arr[0]);
+              }
             }
           });
 
