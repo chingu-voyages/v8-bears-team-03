@@ -6,7 +6,7 @@ Developer focused social media platform that allows developers to share their cu
 
 To get your development environment running:
 
-1. Install MongoDB. See documentation at [MongoDB](https://www.mongodb.com/download-center/community)
+1. Install and run MongoDB. See documentation at [MongoDB](https://www.mongodb.com/download-center/community)
 
 2. Clone this repository
 
@@ -14,12 +14,14 @@ To get your development environment running:
     git clone git@github.com:chingu-voyages/v8-bears-team-03.git
 ```
 
-3. Install dependencies
+3. Run the setup shell script
 
 ```
-    # from the root folder
-    npm install --prefix client/ && npm install --prefix api/
+    cd v8-bears-team-03/
+    sh setup
 ```
+
+##### Steps below are run with the setup script in the step above.
 
 4. Start your development environment
 
@@ -30,7 +32,14 @@ To get your development environment running:
     npm start
 ```
 
-5. Seed the database with test data
+5. Setup variables config.json
+
+```
+    # from the api folder
+    cp config_example.json config.json
+```
+
+6. Seed the database with test data
 
 ```
     # from the root folder

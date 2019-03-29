@@ -1,0 +1,47 @@
+#!/bin/bash
+echo
+echo
+echo "Downloading dependencies for the devbev development environment."
+echo
+echo
+
+npm install --prefix client/ && npm install --prefix api/
+echo "Done..."
+echo
+echo
+
+echo "Setting up devbev config file."
+
+cp ./api/config_example.json ./api/config.json
+echo "Done..."
+echo
+echo
+
+read -r -p "Seed the database with test data? (MongoDB must be running) [Y/n] " answer_one
+ 
+case $answer_one in
+  [yY][eE][sS]|[yY])
+    node ./api/utilities/seed.js
+    ;;
+  *)
+    echo "Skipping..."
+    ;;
+esac
+
+echo
+echo
+read -r -p "devbev setup complete. Start devbev? (MongoDB must be running) [Y/n] " answer_two
+
+case $answer_two in
+  [yY][eE][sS]|[yY])
+    gnome-terminal --tab --title="api" -- bash -c 'npm start --prefix api/; $SHELL'
+    gnome-terminal --tab --title="client" -- bash -c 'npm start --prefix client/; $SHELL'
+    ;;
+  *)
+    ;;
+esac
+
+echo
+echo
+echo "Setup finished."
+exit 1
