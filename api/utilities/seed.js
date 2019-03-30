@@ -36,7 +36,7 @@ const createDrink = () => {
     drink
       .save()
       .then(drink => {
-        console.log("Drink created");
+        console.log(drink);
         if (key === arr.length - 1) {
           mongoose.disconnect();
         }
