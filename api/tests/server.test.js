@@ -42,25 +42,25 @@ describe("Testing Drinks", () => {
         chai
             .request(app)
             .post("/drinks")
-            .set('content-type', 'application/json')
+            .set("content-type", "application/json")
             .send(defaultDrinkSettings)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.should.be.json;
-                res.body.should.be.a('object');
-                res.body.should.have.property('type');
-                res.body.should.have.property('name');
-                res.body.should.have.property('tastingNotes');
-                res.body.should.have.property('comments');
-                res.body.should.have.property('image');
-                res.body.should.have.property('rating');
+                res.body.should.be.a("object");
+                res.body.should.have.property("type");
+                res.body.should.have.property("name");
+                res.body.should.have.property("tastingNotes");
+                res.body.should.have.property("comments");
+                res.body.should.have.property("image");
+                res.body.should.have.property("rating");
                 res.body.should.have.property("_id");
                 done();
             });
     });
 
     // Should GET drink by ID
-    it('should list a SINGLE drink on /drink/<id> GET', function(done) {
+    it("should list a SINGLE drink on /drink/<id> GET", function(done) {
         const newDrink = new Drink({
             type: "tea",
             name: "testName",
@@ -77,13 +77,13 @@ describe("Testing Drinks", () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.should.be.json;
-                    res.body.should.be.a('object');
-                    res.body.drink.should.have.property('type');
-                    res.body.drink.should.have.property('name');
-                    res.body.drink.should.have.property('tastingNotes');
-                    res.body.drink.should.have.property('comments');
-                    res.body.drink.should.have.property('image');
-                    res.body.drink.should.have.property('rating');
+                    res.body.should.be.a("object");
+                    res.body.drink.should.have.property("type");
+                    res.body.drink.should.have.property("name");
+                    res.body.drink.should.have.property("tastingNotes");
+                    res.body.drink.should.have.property("comments");
+                    res.body.drink.should.have.property("image");
+                    res.body.drink.should.have.property("rating");
                     done();
                 });
         });
