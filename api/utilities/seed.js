@@ -7,7 +7,9 @@ const Liquor = require("../models/liquor");
 
 // Seed DB
 mongoose
-  .connect("mongodb://localhost:27017/devbev", { useNewUrlParser: true })
+  .connect("mongodb://localhost:27017/devbev", {
+    useNewUrlParser: true
+  })
   .then(() => {
     console.log("MongoDB Connected");
   })
@@ -58,8 +60,7 @@ const buildDrinkModel = options => {
   }
 };
 
-const feedData = [
-  {
+const feedData = [{
     type: "beer",
     name: "Dragon's Milk",
     tastingNotes: "Dark and Rich",
@@ -221,8 +222,7 @@ const feedData = [
   {
     type: "beer",
     name: "HaandBic",
-    tastingNotes:
-      "Moderate sweet flavor, lightly acidic with a smooth tartness and soft carbination",
+    tastingNotes: "Moderate sweet flavor, lightly acidic with a smooth tartness and soft carbination",
     comments: "A unique and hard to find sour beer.",
     image: "v1553797280/drinkImages/ld8pfapz6u4uiacltpqe",
     rating: 2,
@@ -230,3 +230,5 @@ const feedData = [
     source: "Haandbryggeriet Brewery"
   }
 ];
+
+module.exports = {clearDatabase, createDrink, feedData};
