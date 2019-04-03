@@ -15,7 +15,9 @@ const Coffee = require("./models/coffee");
 const Liquor = require("./models/liquor");
 const Tea = require("./models/tea");
 const Drink = require("./models/drink");
+const User = require("./models/user");
 const routeDrinks = require("./routes/drinks");
+const routeAuth = require("./routes/auth");
 
 // Set environment variables
 const config = require("./utilities/config");
@@ -63,6 +65,9 @@ app.get("/drinks", routeDrinks.getByTypeOrAll);
 
 // GET by ID and display all info
 app.get("/drinks/:id", routeDrinks.getIndividualDrink);
+
+// GITHUB LOGIN
+app.get("/auth/github/callback", routeAuth);
 
 // POST /drink
 app.post("/drinks", routeDrinks.postDrinks);

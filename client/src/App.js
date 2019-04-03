@@ -26,7 +26,7 @@ const App = function() {
     });
   }
 
-  function showAddDrinkForm(){
+  function showAddDrinkForm() {
     setShowInputForm(!showInputForm);
   }
 
