@@ -24,11 +24,11 @@ function NavBar(props) {
           <li id="add" onClick={() => props.addDrinkForm()}>
             add my drink
           </li>
-          <li>
+          {/* <li>
             <a href="https://github.com/login/oauth/authorize?client_id=5391d9587090cbee0c38">
               login
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
