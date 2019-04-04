@@ -7,7 +7,7 @@ function DisplayCase(props) {
     "https://res.cloudinary.com/devbev/image/upload/c_scale,w_300/";
 
   useEffect(() => {
-    fetch("http://localhost:8000/drinks/" + props.drinkID)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}${props.drinkID}`)
       .then(resp => resp.json())
       .then(resp => setDrink(resp.drink));
   }, [props.drinkID, setDrink]);
