@@ -85,7 +85,7 @@ function AddMyDrinkForm(props) {
       drinkData[key] = value;
     }
 
-    fetch("http://localhost:8000/drinks", {
+    fetch(process.env.REACT_APP_DEV_API_URL, {
       method: "POST",
       body: JSON.stringify(drinkData),
       headers: {

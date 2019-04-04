@@ -7,7 +7,7 @@ function BeverageFeed(props) {
     "https://res.cloudinary.com/devbev/image/upload/c_scale,w_300/";
 
   useEffect(() => {
-    fetch("http://localhost:8000/drinks" + props.filterType)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}${props.filterType}`)
       .then(resp => resp.json())
       .then(resp => setDrinks(resp.drinks));
   }, [props.filterType, setDrinks]);

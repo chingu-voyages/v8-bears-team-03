@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
     global.gConfig.MONGO_PASSWORD
   }@${global.gConfig.MONGO_HOSTNAME}:${global.gConfig.MONGO_PORT}/${
     global.gConfig.MONGO_DB
-  }?authSource=admin`;
+  }`;
 } else {
   dbUrl = `mongodb://${global.gConfig.MONGO_HOSTNAME}:${
     global.gConfig.MONGO_PORT
