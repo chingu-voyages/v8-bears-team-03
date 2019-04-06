@@ -1,4 +1,5 @@
 const validateDrinkInput = require("../validation/drink");
+const replaceEmptyAttributes = require("../utilities/modelHelpers");
 
 // GET by type
 // Default is return all drinks
@@ -102,14 +103,16 @@ exports.postDrinks = (req, res) => {
   let type = req.body.type;
   let newDrink;
 
+  drinkFields = replaceEmptyAttributes(req.body);
+
   // Default Drink Fields
   let defaultFields = {
     type,
-    name: req.body.name,
-    tastingNotes: req.body.tastingNotes,
-    comments: req.body.comments,
-    image: req.body.image,
-    rating: req.body.rating
+    name: drinkFields.name,
+    tastingNotes: drinkFields.tastingNotes,
+    comments: drinkFields.comments,
+    image: drinkFields.image,
+    rating: drinkFields.rating
   };
 
   // Determine which type and store it as that type
@@ -117,29 +120,29 @@ exports.postDrinks = (req, res) => {
     case "beer":
       newDrink = new Beer({
         ...defaultFields,
-        style: req.body.style,
-        source: req.body.source
+        style: drinkFields.style,
+        source: drinkFields.source
       });
       break;
     case "coffee":
       newDrink = new Coffee({
         ...defaultFields,
-        beanType: req.body.beanType,
-        brewTime: req.body.brewTime,
-        strength: req.body.strength
+        beanType: drinkFields.beanType,
+        brewTime: drinkFields.brewTime,
+        strength: drinkFields.strength
       });
       break;
     case "liquor":
       newDrink = new Liquor({
         ...defaultFields,
-        typOfLiquor: req.body.typOfLiquor
+        typOfLiquor: drinkFields.typOfLiquor
       });
       break;
     case "tea":
       newDrink = new Tea({
         ...defaultFields,
-        leafType: req.body.leafType,
-        steepTime: req.body.steepTime
+        leafType: drinkFields.leafType,
+        steepTime: drinkFields.steepTime
       });
       break;
     default:
