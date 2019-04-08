@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import RatingStars from "./RatingStars";
 
 function DisplayCase(props) {
-  const [drink, setDrink] = useState([]);
+  let drink = props.displayCaseBeverage;
   const imagePrefix =
     "https://res.cloudinary.com/devbev/image/upload/c_scale,w_300/";
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}${props.drinkID}`)
-      .then(resp => resp.json())
-      .then(resp => setDrink(resp.drink));
-  }, [props.drinkID, setDrink]);
 
   let drinkTypeInfo;
   switch (drink.type) {

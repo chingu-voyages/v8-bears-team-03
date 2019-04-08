@@ -56,7 +56,7 @@ exports.getByTypeOrAll = (req, res) => {
     default:
       Promise.all([
         Drink.find()
-          .select("name image rating _id")
+          .select("name image rating type _id")
           .exec()
       ]).then(([drinks]) =>
         res.json({

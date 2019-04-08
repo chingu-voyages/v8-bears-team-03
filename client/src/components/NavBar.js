@@ -6,19 +6,19 @@ function NavBar(props) {
       <div>
         <h1>devbev</h1>
         <ul>
-          <li id="all" onClick={() => props.addFilter("")}>
+          <li id="all" onClick={() => props.addFilter("none")}>
             all
           </li>
-          <li id="beer" onClick={() => props.addFilter("beer")}>
+          <li id="beer" onClick={() => props.addFilter("Beer")}>
             beer
           </li>
-          <li id="tea" onClick={() => props.addFilter("tea")}>
+          <li id="tea" onClick={() => props.addFilter("Tea")}>
             tea
           </li>
-          <li id="coffee" onClick={() => props.addFilter("coffee")}>
+          <li id="coffee" onClick={() => props.addFilter("Coffee")}>
             coffee
           </li>
-          <li id="liquor" onClick={() => props.addFilter("liquor")}>
+          <li id="liquor" onClick={() => props.addFilter("Liquor")}>
             liquor
           </li>
           <li id="add" onClick={() => props.addDrinkForm()}>

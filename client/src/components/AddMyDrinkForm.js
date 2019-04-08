@@ -24,6 +24,8 @@ function AddMyDrinkForm(props) {
     setImageRef("");
     setPrimaryImage(placeholder);
     setFallbackImage(placeholder);
+    props.refreshAllDrinks();
+    props.addDrinkForm();
   }
 
   function showUploadWidget() {
