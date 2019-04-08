@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import RatingStars from "./RatingStars";
 
 function BeverageFeed(props) {
-  const [drinks, setDrinks] = useState([]);
   const imagePrefix =
     "https://res.cloudinary.com/devbev/image/upload/c_scale,w_300/";
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}${props.filterType}`)
-      .then(resp => resp.json())
-      .then(resp => setDrinks(resp.drinks));
-  }, [props.filterType, setDrinks]);
 
   return (
     <section id="beverage-feed">
       <div className="feed-box">
         <div className="feed-scroll">
-          {drinks.map(entry => (
+          {props.drinks.map(entry => (
             <div className="feed-card" key={entry.name + entry._id}>
               <picture>
                 <source
