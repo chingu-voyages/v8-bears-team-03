@@ -107,7 +107,6 @@ exports.postDrinks = (req, res) => {
 
   // Default Drink Fields
   let defaultFields = {
-    type,
     name: drinkFields.name,
     tastingNotes: drinkFields.tastingNotes,
     comments: drinkFields.comments,
