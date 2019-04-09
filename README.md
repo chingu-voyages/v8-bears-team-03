@@ -1,3 +1,5 @@
+![devbev logo](https://raw.githubusercontent.com/chingu-voyages/v8-bears-team-03/dev/client/src/images/og-image.jpg)
+
 # devbev
 
 Developer focused social media platform that allows developers to share their current beverage choice.
@@ -46,11 +48,22 @@ To get your development environment running:
     node ./api/utilities/seed.js
 ```
 
+7. Run tests
+
+```
+    # from the api folder
+    npm run test
+```
+
 ## Built With
 
 - [React](https://reactjs.org/) - Front-end JavaScript framework
 - [Express](https://expressjs.com/) - NodeJS framework
 - [MongoDB](https://www.mongodb.com/) - NoSQL Database
+
+## Attribution
+
+- devbev logo - [ICONFINDER](https://www.iconfinder.com/) [(license)](https://creativecommons.org/licenses/by-sa/3.0/)
 
 ## Authors
 
