@@ -4,7 +4,6 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const {ObjectID} = require("mongodb");
 
 // Initialize the Express App
 const app = express();
@@ -77,4 +76,4 @@ app.listen(global.gConfig.NODE_PORT, () => {
   console.log(`listening on port ${global.gConfig.NODE_PORT}`);
 });
 
-module.exports = {app};
+module.exports = { app };
