@@ -1,0 +1,301 @@
+* {
+  box-sizing: border-box;
+}
+
+p, img, div, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*=====================*/
+/* PAGE WRAPPER STYLES */
+/*=====================*/
+
+#page-wrapper {
+  display: flex;
+}
+
+
+/*============*/
+/* NAV STYLES */
+/*============*/
+
+nav {
+  background-image: url("./images/main-image-cropped.png");
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 500px;
+  height: 500px;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 0);
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  shape-outside: polygon(0 0, 0 100%, 100% 0);
+}
+
+h1 {
+  margin: 0 0 1.5rem 0;
+  padding: 1rem 0;
+  text-align: center;
+  font-family: 'Josefin Sans';
+  font-size: 4rem;
+  color: white;
+
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: rgb(0, 0, 0);
+}
+
+li {
+  background-color: rgba(255, 255, 255, .5);
+  width: 125px;
+  height: 2rem;
+  line-height: 2rem;
+  border: 1px solid clear;
+  border-radius: 25px;
+  text-align: center;
+  margin: .5rem 2rem;
+  transition-property: box-shadow;
+  transition-duration: 300ms;
+}
+
+#add {
+  background-color: rgba(124, 119, 119, 0.527);
+  color: white;
+}
+
+li:hover {
+  box-shadow: 2px 2px 10px white,
+              2px -2px 10px white,
+              -2px 2px 10px white;
+}
+
+/*=====================*/
+/* Main Styles */
+/*=====================*/
+
+main {
+  width: calc(100vw - 500px);
+}
+
+/*=====================*/
+/* Display Case Styles */
+/*=====================*/
+
+#DisplayCase {
+  height: 300px;
+  width: 95%;
+  font-family: 'Josefin Sans';
+  transform: translateX(-20px);
+  width: calc(98% + 20px);
+  margin-top: 2rem;
+}
+
+.display-case-box {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 1rem 2rem;
+  height: 100%;
+  font-family: 'Raleway';
+}
+
+.display-case-box h3, .display-case-box h4 {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+}
+
+.display-case-box h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.display-case-box h4 {
+  font-size: 1.25rem;
+}
+
+.display-case-box p {
+  font-size: .75rem;
+  margin-bottom: .25rem;
+}
+
+#display-case-image {
+  width: 250px;
+  margin-right: 2rem;
+  box-shadow: 2px 2px 5px rgb(185, 181, 181),
+              2px -2px 5px rgb(185, 181, 181),
+              -2px 2px 5px rgb(185, 181, 181),
+              -2px -2px 5px rgb(185, 181, 181);
+  border-radius: 5px;
+}
+
+
+/*=====================*/
+/* Beverage Feed Styles */
+/*=====================*/
+
+
+#beverage-feed {
+  transform: translateX(-350px);
+  width: calc(98% + 350px);
+}
+
+.feed-box {
+  width: 98%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.feed-scroll {
+  display: flex;
+  overflow: scroll;
+  align-items: center;
+  height: 90%;
+  padding-left: .50rem;
+}
+
+.feed-card {
+  height: 200px;
+  /* width: 200px; */
+  margin: 0 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.feed-image {
+  height: 150px;
+  margin-bottom: .25rem;
+  box-shadow: 2px 2px 5px rgb(185, 181, 181),
+              2px -2px 5px rgb(185, 181, 181),
+              -2px 2px 5px rgb(185, 181, 181),
+              -2px -2px 5px rgb(185, 181, 181);
+  border-radius: 5px;
+  align-self: center;
+}
+
+.feed-info-box {
+  font-family: 'Raleway';
+  font-size: .75rem;
+}
+
+.feed-rating{
+  color: rgba(18, 46, 170, 0.671);
+  margin-top: .5rem;
+  font-size: 1rem;
+}
+
+/*=======================*/
+/* Add Drink Form Styles */
+/*=======================*/
+
+#add-my-drink-modal {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  min-width: 655px;
+  min-height: 525px;
+  background-color: rgb(100, 133, 160);
+  background-color: rgba(100, 133, 160, 0.877);
+  max-height: calc(100vh - 3rem);
+  max-width: calc(100vw - 3rem);
+}
+
+#close-modal {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  font-family: 'Josefin Sans';
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+
+form {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  width: 95%;
+  height: 85%;
+  font-family: 'Josefin Sans';
+  display: flex;
+}
+
+form div {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#form-picture img {
+  width: 200px;
+}
+
+#form-picture {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  border: 2px solid white;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: .25rem 0;
+}
+
+input, select, textarea {
+  margin: .25rem;
+  width: 100%;
+  height: 2rem;
+  border: none;
+  text-align: ;
+  padding-left: .5rem;
+}
+
+button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: inherit;
+  border: none;
+  box-shadow: 1px 1px 5px black;
+  font-size: 2rem;
+  padding: 1rem;
+  font-family: 'Josefin Sans';
+}
+
+#form-text {
+  display: flex;
+  flex-direction: row;
+}
