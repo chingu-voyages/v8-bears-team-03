@@ -18,10 +18,7 @@ mongoose
     clearDatabase();
   })
   .then(() => {
-    createUser();
-  })
-  .then(() => {
-    createDrink();
+    createModels();
   })
   .catch(error => {
     console.log(error);
@@ -36,14 +33,20 @@ clearDatabase = () => {
   });
 };
 
-const createUser = () => {
-  userData.forEach(item => {
+let users = [];
+
+const createModels = () => {
+  userData.forEach((item, key, arr) => {
     user = new User(item);
 
     user
       .save()
       .then(user => {
+        users.push(user);
         console.log(user);
+        if (key === arr.length - 1) {
+          createDrink();
+        }
       })
       .catch(err => {
         console.log(err);
@@ -54,7 +57,9 @@ const createUser = () => {
 const createDrink = () => {
   feedData.forEach((item, key, arr) => {
     drink = buildDrinkModel(item);
+    drink.user = users[Math.floor(Math.random() * users.length)];
 
+    console.log(drink);
     drink
       .save()
       .then(drink => {
