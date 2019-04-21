@@ -71,6 +71,9 @@ app.get("/auth/github/callback", routeAuth);
 // POST /drink
 app.post("/drinks", routeDrinks.postDrinks);
 
+// DELETE /drink:id
+app.delete("/drinks/:id", routeDrinks.deleteDrink);
+
 // Start app
 app.listen(global.gConfig.NODE_PORT, () => {
   console.log(`listening on port ${global.gConfig.NODE_PORT}`);

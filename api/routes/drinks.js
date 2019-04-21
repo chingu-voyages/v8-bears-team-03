@@ -97,9 +97,7 @@ exports.getIndividualDrink = (req, res) => {
 exports.postDrinks = (req, res) => {
   const { error } = validateDrinkInput(req.body);
 
-  if (error) {
-    return res.status(400).json(error);
-  }
+  if (error) return res.status(400).json(error);
 
   let type = req.body.type;
   let newDrink;
@@ -159,4 +157,21 @@ exports.postDrinks = (req, res) => {
       res.status(400).send(e);
     }
   );
+};
+
+// Delete a Drink
+exports.deleteDrink = (req, res) => {
+  let id = req.params.id;
+
+  // Validate ID
+  if (!ObjectID.isValid(id)) return res.status(404).send();
+
+  Drink.findByIdAndRemove(id).then((drink) => {
+    if (!drink) return res.status(404).send();
+  
+    res.send({drink});
+  }).catch(e => {
+    res.status(400).send();
+  });
+
 };
