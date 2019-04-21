@@ -74,6 +74,9 @@ app.post("/drinks", routeDrinks.postDrinks);
 // DELETE /drink:id
 app.delete("/drinks/:id", routeDrinks.deleteDrink);
 
+// Update /drink:id
+app.patch("/drinks/:id", routeDrinks.updateDrink);
+
 // Start app
 app.listen(global.gConfig.NODE_PORT, () => {
   console.log(`listening on port ${global.gConfig.NODE_PORT}`);

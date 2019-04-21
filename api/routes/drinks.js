@@ -1,6 +1,7 @@
 const validateDrinkInput = require("../validation/drink");
 const replaceEmptyAttributes = require("../utilities/modelHelpers");
 const { ObjectID } = require("mongodb");
+const _ = require("lodash");
 
 // GET by type
 // Default is return all drinks
@@ -174,4 +175,27 @@ exports.deleteDrink = (req, res) => {
     res.status(400).send();
   });
 
+};
+
+// Update a Drink
+exports.updateDrink = (req, res) => {
+  let id = req.params.id;
+
+  // All fields except Image
+  const updatableFields = ["name", "tastingNotes", "comments", "rating", 
+  "style", "source", "beanType", "brewTime", 
+  "strength", "typeOfLiquor", "leafType", "steepTime" ]
+
+  let body = _.pick(req.body, ...updatableFields);
+
+  // Validate ID
+  if (!ObjectID.isValid(id)) return res.status(404).send();
+
+  Drink.findByIdAndUpdate(id, {$set: body}, {new: true}).then(drink => {
+    if (!drink) return res.status(400).send();
+
+    res.send({drink});
+  }).catch(e => {
+    res.status(400).send();
+  });
 };
