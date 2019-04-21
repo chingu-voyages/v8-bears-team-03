@@ -60,7 +60,7 @@ describe("Testing Drinks", () => {
   });
 
   // Should GET drink by ID
-  it("should list a SINGLE drink on /drink/<id> GET", function(done) {
+  it("should list a SINGLE drink on /drinks/:id GET", done => {
     const newDrink = new Drink({
       type: "tea",
       name: "testName",
@@ -86,5 +86,35 @@ describe("Testing Drinks", () => {
           done();
         });
     });
+  });
+
+  // Should PATCH drink by ID
+  it("should update a single drink on /drinks/:id", done => {
+    const newDrink = new Drink({
+      type: "tea",
+      name: "testName",
+      tastingNotes: "testNotes",
+      comments: "testComments",
+      image: "testImage",
+      rating: 5
+    });
+
+    newDrink.save((err, data) => {
+      chai 
+        .request(app)
+        .patch("/drinks/" + data.id)
+        .send({"name": "newUpdatedName"})
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('drink');
+          res.body.drink.should.be.a('object');
+          res.body.drink.should.have.property('name');
+          res.body.drink.should.have.property('_id');
+          res.body.drink.name.should.equal('newUpdatedName');
+          done();
+        });
+    })
   });
 });
