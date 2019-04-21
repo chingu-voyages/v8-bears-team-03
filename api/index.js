@@ -60,22 +60,18 @@ app.use(
 app.use(cors());
 
 // GET by type and display name, image, rating
-app.get("/drinks", routeDrinks.getByTypeOrAll);
-
 // GET by ID and display all info
+// POST /drink
+// DELETE /drink/:id
+// Update /drink/:id
+app.get("/drinks", routeDrinks.getByTypeOrAll);
 app.get("/drinks/:id", routeDrinks.getIndividualDrink);
+app.post("/drinks", routeDrinks.postDrinks);
+app.delete("/drinks/:id", routeDrinks.deleteDrink);
+app.patch("/drinks/:id", routeDrinks.updateDrink);
 
 // GITHUB LOGIN
 app.get("/auth/github/callback", routeAuth);
-
-// POST /drink
-app.post("/drinks", routeDrinks.postDrinks);
-
-// DELETE /drink:id
-app.delete("/drinks/:id", routeDrinks.deleteDrink);
-
-// Update /drink:id
-app.patch("/drinks/:id", routeDrinks.updateDrink);
 
 // Start app
 app.listen(global.gConfig.NODE_PORT, () => {

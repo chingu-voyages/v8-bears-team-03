@@ -184,7 +184,7 @@ exports.updateDrink = (req, res) => {
   // All fields except Image
   const updatableFields = ["name", "tastingNotes", "comments", "rating", 
   "style", "source", "beanType", "brewTime", 
-  "strength", "typeOfLiquor", "leafType", "steepTime" ]
+  "strength", "typeOfLiquor", "leafType", "steepTime" ];
 
   let body = _.pick(req.body, ...updatableFields);
 
