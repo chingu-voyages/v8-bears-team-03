@@ -4,6 +4,7 @@ const Tea = require("../models/tea");
 const Coffee = require("../models/coffee");
 const Beer = require("../models/beer");
 const Liquor = require("../models/liquor");
+const User = require("../models/user");
 
 // Seed DB
 mongoose
@@ -17,7 +18,7 @@ mongoose
     clearDatabase();
   })
   .then(() => {
-    createDrink();
+    createModels();
   })
   .catch(error => {
     console.log(error);
@@ -27,12 +28,38 @@ clearDatabase = () => {
   Drink.deleteMany({}, err => {
     console.log("Drinks collection dropped");
   });
+  User.deleteMany({}, err => {
+    console.log("User collection dropped");
+  });
+};
+
+let users = [];
+
+const createModels = () => {
+  userData.forEach((item, key, arr) => {
+    user = new User(item);
+
+    user
+      .save()
+      .then(user => {
+        users.push(user);
+        console.log(user);
+        if (key === arr.length - 1) {
+          createDrink();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 };
 
 const createDrink = () => {
   feedData.forEach((item, key, arr) => {
     drink = buildDrinkModel(item);
+    drink.user = users[Math.floor(Math.random() * users.length)];
 
+    console.log(drink);
     drink
       .save()
       .then(drink => {
@@ -60,7 +87,31 @@ const buildDrinkModel = options => {
   }
 };
 
-const feedData = [{
+const userData = [
+  {
+    username: "sdbowen",
+    avatar: "https://avatars2.githubusercontent.com/u/22715037?v=4",
+    name: "Steven"
+  },
+  {
+    username: "Jc7j",
+    avatar: "https://avatars2.githubusercontent.com/u/31164073?v=4",
+    name: "Jason"
+  },
+  {
+    username: "johnmeade-webdev",
+    avatar: "https://avatars2.githubusercontent.com/u/36777286?v=4",
+    name: "John"
+  },
+  {
+    username: "starrs33d",
+    avatar: "https://avatars3.githubusercontent.com/u/47910670?v=4",
+    name: "Pop"
+  }
+];
+
+const feedData = [
+  {
     type: "beer",
     name: "Dragon's Milk",
     tastingNotes: "Dark and Rich",
@@ -100,86 +151,6 @@ const feedData = [{
     leafType: "Red",
     steepTime: 5
   },
-  // {
-  //   type: "beer",
-  //   name: "Dragon's Milk",
-  //   tastingNotes: "Dark and Rich",
-  //   comments: "pairs well with prototyping in JavaScript",
-  //   image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
-  //   rating: 3,
-  //   style: "Stout aged in Bourbon Casks",
-  //   source: "New Holland Brewing"
-  // },
-  // {
-  //   type: "coffee",
-  //   name: "Gingerbread Cold Brew",
-  //   tastingNotes: "slightly spicy with a hint of orange",
-  //   comments: "",
-  //   image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
-  //   rating: 4,
-  //   beanType: "Arabica",
-  //   brewType: "Cold Brew",
-  //   strength: 3
-  // },
-  // {
-  //   type: "liquor",
-  //   name: "Angel's Envy",
-  //   tastingNotes: "smooth yet fiery, finishes with a hint of port",
-  //   comments: "excellent!",
-  //   image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
-  //   rating: 5,
-  //   typeOfLiquor: "Bourbon"
-  // },
-  // {
-  //   type: "tea",
-  //   name: "Laager",
-  //   tastingNotes: "delicate and fruity",
-  //   comments: "great African tea!",
-  //   image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
-  //   rating: 4,
-  //   leafType: "Red",
-  //   steepTime: 5
-  // },
-  // {
-  //   type: "beer",
-  //   name: "Dragon's Milk",
-  //   tastingNotes: "Dark and Rich",
-  //   comments: "pairs well with prototyping in JavaScript",
-  //   image: "https://drive.google.com/uc?id=1tww2Kuvfau9Aycsztaqn4ad_3dAxQsbg",
-  //   rating: 3,
-  //   style: "Stout aged in Bourbon Casks",
-  //   source: "New Holland Brewing"
-  // },
-  // {
-  //   type: "coffee",
-  //   name: "Gingerbread Cold Brew",
-  //   tastingNotes: "slightly spicy with a hint of orange",
-  //   comments: "",
-  //   image: "https://drive.google.com/uc?id=1uJYP10MqNfEBDjlCmW5cH07X7jXEO9kL",
-  //   rating: 4,
-  //   beanType: "Arabica",
-  //   brewType: "Cold Brew",
-  //   strength: 5
-  // },
-  // {
-  //   type: "liquor",
-  //   name: "Angel's Envy",
-  //   tastingNotes: "smooth yet fiery, finishes with a hint of port",
-  //   comments: "excellent!",
-  //   image: "https://drive.google.com/uc?id=1zirJRp-8-yriFhphAF7OQcOZDKdWFI9G",
-  //   rating: 5,
-  //   typeOfLiquor: "Bourbon"
-  // },
-  // {
-  //   type: "tea",
-  //   name: "Laager",
-  //   tastingNotes: "delicate and fruity",
-  //   comments: "great African tea!",
-  //   image: "https://drive.google.com/uc?id=11fPYwF4LVx1ixVOBrWXlkiHet6X1adeL",
-  //   rating: 4,
-  //   leafType: "Red",
-  //   steepTime: 6
-  // },
   {
     type: "tea",
     name: "Mango Infusion",
@@ -222,7 +193,8 @@ const feedData = [{
   {
     type: "beer",
     name: "HaandBic",
-    tastingNotes: "Moderate sweet flavor, lightly acidic with a smooth tartness and soft carbination",
+    tastingNotes:
+      "Moderate sweet flavor, lightly acidic with a smooth tartness and soft carbination",
     comments: "A unique and hard to find sour beer.",
     image: "v1553797280/drinkImages/ld8pfapz6u4uiacltpqe",
     rating: 2,
@@ -231,4 +203,4 @@ const feedData = [{
   }
 ];
 
-module.exports = {clearDatabase, createDrink, feedData};
+module.exports = { clearDatabase, createDrink, feedData };

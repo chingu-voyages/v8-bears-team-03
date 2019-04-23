@@ -100,6 +100,7 @@ exports.postDrinks = (req, res) => {
 
   if (error) return res.status(400).json(error);
 
+  let user;
   let type = req.body.type;
   let newDrink;
 
@@ -111,7 +112,8 @@ exports.postDrinks = (req, res) => {
     tastingNotes: drinkFields.tastingNotes,
     comments: drinkFields.comments,
     image: drinkFields.image,
-    rating: drinkFields.rating
+    rating: drinkFields.rating,
+    user
   };
 
   // Determine which type and store it as that type
