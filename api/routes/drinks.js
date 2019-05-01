@@ -6,11 +6,15 @@ const _ = require("lodash");
 // GET by type
 // Default is return all drinks
 exports.getByTypeOrAll = (req, res) => {
-  let type = req.query.type;
+  const type = req.query.type;
+  const name = req.query.name;
   const query = {};
 
   if (type) {
     query["drinkType"] = type;
+  }
+  if (name) {
+    query["name"] = { $regex: name, $options: "i" };
   }
 
   Promise.all([
