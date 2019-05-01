@@ -7,66 +7,21 @@ const _ = require("lodash");
 // Default is return all drinks
 exports.getByTypeOrAll = (req, res) => {
   let type = req.query.type;
+  const query = {};
 
-  // Checks if /drinks?type=<case> then displays
-  switch (type) {
-    case "beer":
-      Promise.all([
-        Beer.find()
-          .select("name image rating _id")
-          .exec()
-      ]).then(([drinks]) =>
-        res.json({
-          drinks
-        })
-      );
-      break;
-    case "tea":
-      Promise.all([
-        Tea.find()
-          .select("name image rating _id")
-          .exec()
-      ]).then(([drinks]) =>
-        res.json({
-          drinks
-        })
-      );
-      break;
-    case "coffee":
-      Promise.all([
-        Coffee.find()
-          .select("name image rating _id")
-          .exec()
-      ]).then(([drinks]) =>
-        res.json({
-          drinks
-        })
-      );
-      break;
-    case "liquor":
-      Promise.all([
-        Liquor.find()
-          .select("name image rating _id")
-          .exec()
-      ]).then(([drinks]) =>
-        res.json({
-          drinks
-        })
-      );
-      break;
-    // Displays everything as default
-    default:
-      Promise.all([
-        Drink.find()
-          .select("name image rating type _id")
-          .exec()
-      ]).then(([drinks]) =>
-        res.json({
-          drinks
-        })
-      );
-      break;
+  if (type) {
+    query["drinkType"] = type;
   }
+
+  Promise.all([
+    Drink.find(query)
+      .select("name image rating _id")
+      .exec()
+  ]).then(([drinks]) =>
+    res.json({
+      drinks
+    })
+  );
 };
 
 // GET by ID
@@ -169,14 +124,15 @@ exports.deleteDrink = (req, res) => {
   // Validate ID
   if (!ObjectID.isValid(id)) return res.status(404).send();
 
-  Drink.findByIdAndRemove(id).then((drink) => {
-    if (!drink) return res.status(404).send();
-  
-    res.send({drink});
-  }).catch(e => {
-    res.status(400).send();
-  });
+  Drink.findByIdAndRemove(id)
+    .then(drink => {
+      if (!drink) return res.status(404).send();
 
+      res.send({ drink });
+    })
+    .catch(e => {
+      res.status(400).send();
+    });
 };
 
 // Update a Drink
@@ -184,20 +140,33 @@ exports.updateDrink = (req, res) => {
   let id = req.params.id;
 
   // All fields except Image
-  const updatableFields = ["name", "tastingNotes", "comments", "rating", 
-  "style", "source", "beanType", "brewTime", 
-  "strength", "typeOfLiquor", "leafType", "steepTime" ];
+  const updatableFields = [
+    "name",
+    "tastingNotes",
+    "comments",
+    "rating",
+    "style",
+    "source",
+    "beanType",
+    "brewTime",
+    "strength",
+    "typeOfLiquor",
+    "leafType",
+    "steepTime"
+  ];
 
   let body = _.pick(req.body, ...updatableFields);
 
   // Validate ID
   if (!ObjectID.isValid(id)) return res.status(404).send();
 
-  Drink.findByIdAndUpdate(id, {$set: body}, {new: true}).then(drink => {
-    if (!drink) return res.status(400).send();
+  Drink.findByIdAndUpdate(id, { $set: body }, { new: true })
+    .then(drink => {
+      if (!drink) return res.status(400).send();
 
-    res.send({drink});
-  }).catch(e => {
-    res.status(400).send();
-  });
+      res.send({ drink });
+    })
+    .catch(e => {
+      res.status(400).send();
+    });
 };

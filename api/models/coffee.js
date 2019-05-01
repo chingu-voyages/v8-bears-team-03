@@ -19,4 +19,4 @@ const coffeeSchema = new Schema(
   options
 );
 
-module.exports = Coffee = Drink.discriminator("Coffee", coffeeSchema);
+module.exports = Coffee = Drink.discriminator("coffee", coffeeSchema);

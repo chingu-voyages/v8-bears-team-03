@@ -16,4 +16,4 @@ const beerSchema = new Schema(
   options
 );
 
-module.exports = Beer = Drink.discriminator("Beer", beerSchema);
+module.exports = Beer = Drink.discriminator("beer", beerSchema);
