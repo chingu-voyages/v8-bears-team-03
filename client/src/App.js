@@ -3,6 +3,7 @@ import SearchDrinks from "./components/SearchDrinks";
 import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
 import NavBar from "./components/NavBar";
+import Search from "./components/Search";
 import AddMyDrinkForm from "./components/AddMyDrinkForm";
 
 const App = function() {
@@ -20,7 +21,7 @@ const App = function() {
 
   //API Call to Retrieve All Beverages
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}`)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`)
       .then(resp => resp.json())
       .then(resp => {
         setAllDrinks(resp.drinks);
@@ -30,7 +31,7 @@ const App = function() {
   }, []);
 
   function refreshAllDrinks() {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}`)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`)
       .then(resp => resp.json())
       .then(resp => {
         setAllDrinks(resp.drinks);
@@ -42,7 +43,7 @@ const App = function() {
 
   //allows display case drink to change; is passed into the beverage feed component
   function changeDisplayCase(drinkID) {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}${drinkID}`)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/${drinkID}`)
       .then(resp => resp.json())
       .then(resp => {
         setDisplayCaseBeverage(resp.drink);
@@ -72,6 +73,7 @@ const App = function() {
   return (
     <div id="page-wrapper">
       <NavBar addFilter={addFilter} addDrinkForm={showAddDrinkForm} />
+      {/* <Search /> */}
       <main>
         <DisplayCase displayCaseBeverage={displayCaseBeverage} />
         <BeverageFeed
