@@ -45,7 +45,8 @@ module.exports = auth = (req, res) => {
               res.send(err);
             } else {
               if (arr.length > 0) {
-                res.send(arr[0]);
+                // res.send(arr[0]);
+                res.redirect("http://localhost:3000/");
               }
             }
           });
@@ -54,7 +55,8 @@ module.exports = auth = (req, res) => {
           // create a new user and save to the databse
           newUser.save().then(
             user => {
-              res.send(user);
+              // res.send(user);
+              res.redirect("http://localhost:3000/");
             },
             e => {
               res.send(e);

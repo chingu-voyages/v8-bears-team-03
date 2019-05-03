@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+// import "./App.css";
 import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
 import NavBar from "./components/NavBar";

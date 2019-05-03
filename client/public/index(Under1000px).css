@@ -1,0 +1,282 @@
+/* GLOBAL STYLES */
+/* +++++++++++++ */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  p, img, div, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+
+  ul {
+      list-style: none;
+      list-style-position: inside;
+      margin: 0 0;
+      padding: 0 0;
+  }
+
+/* NAVIGATION STYLES */
+/* +++++++++++++++++ */
+
+nav {
+    background-image: url("./images/main-image-cropped.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 5px 10px rgb(104, 103, 103);
+    margin-bottom: 2rem;
+    min-width: 350;
+}
+
+h1 {
+    font-family: 'Josefin Sans';
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.692);
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    padding: 1rem 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+nav ul {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    background-color: rgba(255, 255, 255, 0.719);
+    color: black;
+    height: 2rem;
+    padding: .25rem .5rem;
+    line-height: 2rem;
+    text-align: center;
+    border-left: 1px solid black;
+    cursor: pointer;
+    flex-grow: 1;
+    transition-property: background-color;
+    transition-duration: 300ms;
+}
+
+#add {
+    background-color: rgba(122, 116, 116, 0.719);
+    color: white;
+}
+
+li:hover, #add:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+/* DISPLAY CASE STYLES */
+/* +++++++++++++++++++ */
+
+.display-case-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    font-family: 'Raleway';
+    margin-bottom: 0 auto 1rem auto;
+    height: 300px;
+}
+  
+.display-case-box h3, .display-case-box h4 {
+    font-family: "Josefin Sans";
+    font-weight: 400;
+}
+  
+.display-case-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: .25rem;
+}
+  
+.display-case-box h4 {
+    font-size: 1rem;
+}
+  
+.display-case-box p {
+    font-size: .75rem;
+    margin-bottom: .25rem;
+}
+
+#display-case-image {
+    width: 125px;
+    /* max-width: 100px;
+    max-height: 150px; */
+    box-shadow: 2px 2px 5px rgb(185, 181, 181),
+                2px -2px 5px rgb(185, 181, 181),
+                -2px 2px 5px rgb(185, 181, 181),
+                -2px -2px 5px rgb(185, 181, 181);
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.display-case-info {
+    max-width: 200px;
+}
+
+/* BEVERAGE FEED STYLES */
+/* +++++++++++++++++++ */
+
+#beverage-feed {
+    width: 100%;
+    background-color: rgb(211, 222, 228);
+}
+  
+.feed-box {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.feed-scroll {
+    display: flex;
+    overflow: scroll;
+    align-items: center;
+    margin: 1rem 1rem;
+}
+  
+.feed-card {
+    height: 175px;
+    margin: 0 .5rem 0 .5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+}
+  
+.feed-image {
+    height: 125px;
+    margin-bottom: .25rem;
+    box-shadow: 2px 2px 5px rgb(185, 181, 181),
+                2px -2px 5px rgb(185, 181, 181),
+                -2px 2px 5px rgb(185, 181, 181),
+                -2px -2px 5px rgb(185, 181, 181);
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+}
+  
+.feed-info-box {
+    font-family: 'Raleway';
+    font-size: .75rem;
+}
+  
+.feed-rating{
+    color: rgba(18, 46, 170, 0.671);
+    margin-top: .5rem;
+    font-size: .5rem;
+}
+
+/*=======================*/
+/* Add Drink Form Styles */
+/*=======================*/
+
+#add-my-drink-modal {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+    min-width: 655px;
+    min-height: 525px;
+    background-color: rgb(100, 133, 160);
+    background-color: rgba(100, 133, 160, 0.877);
+    max-height: calc(100vh - 3rem);
+    max-width: calc(100vw - 3rem);
+  }
+  
+  #close-modal {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    font-family: 'Josefin Sans';
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+  
+  
+  form {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 95%;
+    height: 85%;
+    font-family: 'Josefin Sans';
+    display: flex;
+  }
+  
+  form div {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #form-picture img {
+    width: 200px;
+  }
+  
+  #form-picture {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    border: 2px solid white;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: .25rem 0;
+  }
+  
+  input, select, textarea {
+    margin: .25rem;
+    width: 100%;
+    height: 2rem;
+    border: none;
+    text-align: ;
+    padding-left: .5rem;
+  }
+  
+  button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    box-shadow: 1px 1px 5px black;
+    font-size: 2rem;
+    padding: 1rem;
+    font-family: 'Josefin Sans';
+  }
+  
+  #form-text {
+    display: flex;
+    flex-direction: row;
+  }
+  
