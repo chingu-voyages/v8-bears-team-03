@@ -73,6 +73,8 @@ app.patch("/drinks/:id", routeDrinks.updateDrink);
 // GITHUB LOGIN
 app.get("/auth/github/callback", routeAuth);
 
+app.get("/auth/github/callback?*")
+
 // Start app
 app.listen(global.gConfig.NODE_PORT, () => {
   console.log(`listening on port ${global.gConfig.NODE_PORT}`);
