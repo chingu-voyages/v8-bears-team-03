@@ -200,6 +200,82 @@ const feedData = [
     rating: 2,
     style: "Belgian Fruit Lambic",
     source: "Haandbryggeriet Brewery"
+  },
+  {
+    type: "liquor",
+    name: "Scooby Snack",
+    tastingNotes: "Everything delicious.",
+    comments: "Looks terrible, tasts alright",
+    image: "v1553797196/drinkImages/mtm3pqpa7yhdajces9e6",
+    rating: 4,
+    typeOfLiquor: "Rum"
+  },
+  {
+    type: "liquor",
+    name: "Irish Coffee",
+    tastingNotes: "Strong coffee flavor with a nice kick of whiskey",
+    comments: "Coffee. All. Day. Long.",
+    image: "v1553797196/drinkImages/mromcohpzbov7lzwijv0",
+    rating: 5,
+    typeOfLiquor: "Vodka"
+  },
+  {
+    type: "liquor",
+    name: "Pisco Sour",
+    tastingNotes: "Good lemon flavor that ends on the sweet side",
+    comments: "Good stuff, would recommend!",
+    image: "v1553797196/drinkImages/mje1j8edsrtixb21n7kg",
+    rating: 3,
+    typeOfLiquor: "Pisco"
+  },
+  {
+    type: "beer",
+    name: "Guinness",
+    tastingNotes: "Perfect balance of bitter and sweet",
+    comments: "A nice Guinness after a long day.",
+    image: "v1553797280/drinkImages/qmxa2qtvhfn0e6xldm2k",
+    rating: 5,
+    style: "Stout",
+    source: "Ireland?"
+  },
+  {
+    type: "beer",
+    name: "Corona Extra",
+    tastingNotes: "Kinda boring",
+    comments: "Only good when on the beach",
+    image: "v1553797280/drinkImages/ldecga0vtnzgylvza1ra",
+    rating: 2,
+    style: "Lager",
+    source: "bottle"
+  },
+  {
+    type: "coffee",
+    name: "Nitro cold brew",
+    tastingNotes: "Extremely smooth and low acidity",
+    comments: "A nice cold brew coffee",
+    image: "v1553796799/drinkImages/bbjmtwqvvxl3lu9tcrmi",
+    rating: 4,
+    brewType: "Cold Brew",
+    strength: 4
+  },
+  {
+    type: "coffee",
+    name: "Pumpkin Spice Latte",
+    tastingNotes: "A lotta pumpkin in here",
+    comments: "Forgot that I hate the taste of pumpkin",
+    image: "v1553796799/drinkImages/skgdtanjkiyzrdeagqfn",
+    rating: 1,
+    strength: 3
+  },
+  {
+    type: "tea",
+    name: "Oolong Tea",
+    tastingNotes: "Sweet, has a fruity vanilla aspect to it",
+    comments: "Oolong tea is the best!",
+    image: "v1553797087/drinkImages/soyedjr2dendjpokvjqo",
+    rating: 4,
+    leafType: "Oolong",
+    steepTime: 4
   }
 ];
 
