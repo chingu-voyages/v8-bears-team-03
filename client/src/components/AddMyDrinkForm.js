@@ -190,7 +190,7 @@ function AddMyDrinkForm(props) {
           />
         </label>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" id="addDrinkSubmit">Submit</button>
       <span id="close-modal" onClick={() => props.addDrinkForm()}>
         X
       </span>
