@@ -18,7 +18,7 @@ function CoffeeFormInputs() {
         />
       </label>
       <label>
-        Brew Time: (Number)
+        Brew Time:
         <input
           type="number"
           name="brewTime"
@@ -28,7 +28,7 @@ function CoffeeFormInputs() {
         />
       </label>
       <label>
-        Strength: (Number)
+        Strength:
         <input
           type="number"
           name="strength"

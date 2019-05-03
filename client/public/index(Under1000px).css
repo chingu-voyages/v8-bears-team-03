@@ -237,8 +237,7 @@ li:hover, #add:hover {
     overflow: auto;
     min-width: 700px;
     min-height: 525px;
-    background-color: rgb(100, 133, 160);
-    background-color: rgba(100, 133, 160, 0.877);
+    background-color: rgb(219, 200, 171);
     max-height: calc(100vh - 3rem);
     max-width: calc(100vw - 3rem);
   }
@@ -310,9 +309,38 @@ li:hover, #add:hover {
     font-size: 2rem;
     padding: 1rem;
     font-family: 'Josefin Sans';
+    cursor: pointer;
   }
   
   #drinkInputForm #form-text {
     display: flex;
     flex-direction: row;
+  }
+
+  @media screen and (max-width: 800px) {
+    #drinkInputForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 98%;
+        padding: .25rem .25rem;
+    }
+
+    #drinkInputForm div {
+        padding: .25rem;
+    }
+    
+    #addDrinkSubmit {
+        position: initial;
+        width: 75%;
+        margin-bottom: .5rem;
+    }
+
+    #add-my-drink-modal {
+        overflow: scroll;
+        max-width: 330px;
+        min-width: 330px;
+        max-height: 400px;
+        min-height: 400px;
+    }
   }

@@ -17,7 +17,7 @@ function TeaFormInputs() {
         />
       </label>
       <label>
-        Steep Time: (Number)
+        Steep Time:
         <input
           type="number"
           name="steepTime"
