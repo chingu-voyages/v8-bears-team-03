@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "./App.css";
+import SearchDrinks from "./components/SearchDrinks";
 import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
 import NavBar from "./components/NavBar";
@@ -87,6 +87,7 @@ const App = function() {
           </aside>
         ) : null}
       </main>
+      <SearchDrinks />
     </div>
   );
 };
