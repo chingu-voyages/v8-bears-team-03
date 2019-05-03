@@ -16,4 +16,4 @@ const teaSchema = new Schema(
   options
 );
 
-module.exports = Tea = Drink.discriminator("Tea", teaSchema);
+module.exports = Tea = Drink.discriminator("tea", teaSchema);
