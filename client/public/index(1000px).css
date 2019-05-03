@@ -257,8 +257,7 @@ main {
   overflow: auto;
   min-width: 700px;
   min-height: 525px;
-  background-color: rgb(100, 133, 160);
-  background-color: rgba(100, 133, 160, 0.877);
+  background-color: rgb(219, 200, 171);
   max-height: calc(100vh - 3rem);
   max-width: calc(100vw - 3rem);
 }
@@ -330,6 +329,7 @@ main {
   font-size: 2rem;
   padding: 1rem;
   font-family: 'Josefin Sans';
+  cursor: pointer;
 }
 
 #drinkInputForm #form-text {

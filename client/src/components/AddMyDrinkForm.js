@@ -114,7 +114,7 @@ function AddMyDrinkForm(props) {
       <div id="form-text">
         <div id="form-general-info">
           <label htmlFor="type">
-            What Type of Drink:
+            Type:
             <select
               name="type"
               value={type}
@@ -129,7 +129,7 @@ function AddMyDrinkForm(props) {
           </label>
 
           <label>
-            Name of Drink:
+            Name:
             <input
               type="text"
               name="name"
