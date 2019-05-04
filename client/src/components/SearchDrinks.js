@@ -3,8 +3,12 @@ import React, { useState } from "react";
 function SearchDrinks(props) {
   const [searchValue, setSearchValue] = useState("");
 
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
-    <form id="searchBar">
+    <form id="searchBar" onSubmit={handleSubmit}>
       <label>
         <input
           type="text"

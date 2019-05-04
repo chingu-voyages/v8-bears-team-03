@@ -20,6 +20,7 @@ const App = function() {
 
   //API Call to Retrieve All Beverages
   useEffect(() => {
+    console.log(`${process.env.REACT_APP_DEV_API_URL}`);
     fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`)
       .then(resp => resp.json())
       .then(resp => {
