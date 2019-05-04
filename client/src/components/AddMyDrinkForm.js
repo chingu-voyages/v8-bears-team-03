@@ -37,6 +37,7 @@ function AddMyDrinkForm(props) {
         googleApiKey: "<image_search_google_api_key>",
         showAdvancedOptions: true,
         cropping: true,
+        croppingCoordinatesMode: "custom",
         multiple: false,
         defaultSource: "local",
         styles: {
