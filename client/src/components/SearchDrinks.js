@@ -8,6 +8,7 @@ function SearchDrinks(props) {
       <label>
         <input
           type="text"
+          id="searchBox"
           name="searchValue"
           value={searchValue}
           placeholder="Get a drink..."
@@ -20,6 +21,7 @@ function SearchDrinks(props) {
         onClick={e => {
           e.preventDefault();
           props.searchDrinks(searchValue);
+          setSearchValue("");
         }}
       >
         GO!

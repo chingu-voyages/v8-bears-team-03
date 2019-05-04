@@ -75,6 +75,7 @@ li {
   margin: .5rem 2rem;
   transition-property: box-shadow;
   transition-duration: 300ms;
+  cursor: pointer;
 }
 
 #add {
@@ -231,6 +232,7 @@ main {
               -2px -2px 5px rgb(185, 181, 181);
   border-radius: 5px;
   align-self: center;
+  cursor: pointer;
 }
 
 .feed-info-box {
@@ -258,8 +260,10 @@ main {
   min-width: 700px;
   min-height: 525px;
   background-color: rgb(219, 200, 171);
+  background-color: rgba(219, 200, 171, 0.904);
   max-height: calc(100vh - 3rem);
   max-width: calc(100vw - 3rem);
+  box-shadow: 2px 2px 5px black;
 }
 
 #close-modal {

@@ -20,6 +20,7 @@ const App = function() {
 
   //API Call to Retrieve All Beverages
   useEffect(() => {
+    console.log(`${process.env.REACT_APP_DEV_API_URL}`);
     fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`)
       .then(resp => resp.json())
       .then(resp => {
@@ -64,6 +65,12 @@ const App = function() {
     }
   }
 
+  function noResults() {
+    document
+      .querySelector("#searchBox")
+      .setAttribute("placeholder", "NO MATCHES!");
+  }
+
   //search drinks and sends results to beverage feed comp.
   function searchDrinks(query) {
     if (query && query.length !== 0) {
@@ -71,9 +78,19 @@ const App = function() {
         .then(resp => resp.json())
         .then(resp => {
           setDisplayedDrinks(resp.drinks);
+          if (resp.drinks.length < 1) {
+            noResults();
+          } else {
+            document
+              .querySelector("#searchBox")
+              .setAttribute("placeholder", "Get a drink...");
+          }
         });
     } else {
       setDisplayedDrinks(allDrinks);
+      document
+        .querySelector("#searchBox")
+        .setAttribute("placeholder", "Get a drink...");
     }
   }
 

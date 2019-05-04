@@ -238,8 +238,10 @@ li:hover, #add:hover {
     min-width: 700px;
     min-height: 525px;
     background-color: rgb(219, 200, 171);
+    background-color: rgba(219, 200, 171, 0.904);
     max-height: calc(100vh - 3rem);
     max-width: calc(100vw - 3rem);
+    box-shadow: 2px 2px 5px black;
   }
   
   #close-modal {
