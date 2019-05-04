@@ -3,7 +3,6 @@ import SearchDrinks from "./components/SearchDrinks";
 import BeverageFeed from "./components/BeverageFeed";
 import DisplayCase from "./components/DisplayCase";
 import NavBar from "./components/NavBar";
-import Search from "./components/Search";
 import AddMyDrinkForm from "./components/AddMyDrinkForm";
 
 const App = function() {
@@ -65,6 +64,19 @@ const App = function() {
     }
   }
 
+  //search drinks and sends results to beverage feed comp.
+  function searchDrinks(query) {
+    if (query && query.length !== 0) {
+      fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks?name=${query}`)
+        .then(resp => resp.json())
+        .then(resp => {
+          setDisplayedDrinks(resp.drinks);
+        });
+    } else {
+      setDisplayedDrinks(allDrinks);
+    }
+  }
+
   //controls visibility of the add my drink form
   function showAddDrinkForm() {
     setShowInputForm(!showInputForm);
@@ -73,7 +85,6 @@ const App = function() {
   return (
     <div id="page-wrapper">
       <NavBar addFilter={addFilter} addDrinkForm={showAddDrinkForm} />
-      {/* <Search /> */}
       <main>
         <DisplayCase displayCaseBeverage={displayCaseBeverage} />
         <BeverageFeed
@@ -89,7 +100,7 @@ const App = function() {
           </aside>
         ) : null}
       </main>
-      <SearchDrinks />
+      <SearchDrinks searchDrinks={searchDrinks} />
     </div>
   );
 };
