@@ -75,6 +75,7 @@ li {
   margin: .5rem 2rem;
   transition-property: box-shadow;
   transition-duration: 300ms;
+  cursor: pointer;
 }
 
 #add {
@@ -231,6 +232,7 @@ main {
               -2px -2px 5px rgb(185, 181, 181);
   border-radius: 5px;
   align-self: center;
+  cursor: pointer;
 }
 
 .feed-info-box {
