@@ -78,7 +78,6 @@ const App = function() {
         .then(resp => resp.json())
         .then(resp => {
           setDisplayedDrinks(resp.drinks);
-          console.log(resp.drinks.length);
           if (resp.drinks.length < 1) {
             noResults();
           } else {
