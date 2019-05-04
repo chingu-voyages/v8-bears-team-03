@@ -20,7 +20,7 @@ const App = function() {
 
   //API Call to Retrieve All Beverages
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}`)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`)
       .then(resp => resp.json())
       .then(resp => {
         setAllDrinks(resp.drinks);
@@ -30,7 +30,7 @@ const App = function() {
   }, []);
 
   function refreshAllDrinks() {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}`)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`)
       .then(resp => resp.json())
       .then(resp => {
         setAllDrinks(resp.drinks);
@@ -42,7 +42,7 @@ const App = function() {
 
   //allows display case drink to change; is passed into the beverage feed component
   function changeDisplayCase(drinkID) {
-    fetch(`${process.env.REACT_APP_DEV_API_URL}${drinkID}`)
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/${drinkID}`)
       .then(resp => resp.json())
       .then(resp => {
         setDisplayCaseBeverage(resp.drink);
@@ -59,6 +59,19 @@ const App = function() {
         }
       });
       setDisplayedDrinks(returnDrinks);
+    } else {
+      setDisplayedDrinks(allDrinks);
+    }
+  }
+
+  //search drinks and sends results to beverage feed comp.
+  function searchDrinks(query) {
+    if (query && query.length !== 0) {
+      fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks?name=${query}`)
+        .then(resp => resp.json())
+        .then(resp => {
+          setDisplayedDrinks(resp.drinks);
+        });
     } else {
       setDisplayedDrinks(allDrinks);
     }
@@ -87,7 +100,7 @@ const App = function() {
           </aside>
         ) : null}
       </main>
-      <SearchDrinks />
+      <SearchDrinks searchDrinks={searchDrinks} />
     </div>
   );
 };

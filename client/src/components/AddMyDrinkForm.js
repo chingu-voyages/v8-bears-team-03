@@ -87,7 +87,7 @@ function AddMyDrinkForm(props) {
       drinkData[key] = value;
     }
 
-    fetch(process.env.REACT_APP_DEV_API_URL, {
+    fetch(`${process.env.REACT_APP_DEV_API_URL}/drinks/`, {
       method: "POST",
       body: JSON.stringify(drinkData),
       headers: {

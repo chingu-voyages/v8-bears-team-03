@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function SearchDrinks(props) {
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState("");
 
   return (
     <form id="searchBar">
@@ -10,11 +10,20 @@ function SearchDrinks(props) {
           type="text"
           name="searchValue"
           value={searchValue}
-          placeholder="search drinks"
+          placeholder="Get a drink..."
           onChange={e => setSearchValue(e.target.value)}
         />
       </label>
-      <button type="submit" id="searchDrinkSubmit">GO!</button>
+      <button
+        type="submit"
+        id="searchDrinkSubmit"
+        onClick={e => {
+          e.preventDefault();
+          props.searchDrinks(searchValue);
+        }}
+      >
+        GO!
+      </button>
     </form>
   );
 }
